@@ -1,0 +1,9 @@
+[submodule "cost-onprem-chart"]
+	path = cost-onprem-chart
+	url = https://github.com/insights-onprem/cost-onprem-chart.git
+[submodule "koku"]
+	path = koku
+	url = https://github.com/project-koku/koku.git
+[submodule "koku-ui"]
+	path = koku-ui
+	url = https://github.com/project-koku/koku-ui.git

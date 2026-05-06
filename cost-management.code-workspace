@@ -1,0 +1,13 @@
+{	
+	"folders": [
+		{
+			"path": "koku-ui"
+		},
+		{
+			"path": "koku",
+		},
+		{
+			"path": "cost-onprem-chart"
+		},
+	],
+}
