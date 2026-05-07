@@ -17,5 +17,5 @@ The canonical script [scripts/submodule-status.sh](scripts/submodule-status.sh) 
 ```markdown
 | Path | URL | Commit | Branch | Working tree |
 |------|-----|--------|--------|--------------|
-| `<path>` | <url> | `<short>` | <branch or detached> | clean | dirty | … |
+| `<path>` | <url> | `<short>` | <branch or detached> | clean / dirty / … |
 ```
