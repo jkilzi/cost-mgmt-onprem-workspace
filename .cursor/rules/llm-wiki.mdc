@@ -1,0 +1,37 @@
+---
+description: >-
+  Karpathy LLM Wiki — proactively maintain wiki/index.md, wiki/log.md, and
+  topical pages; ingest durable learnings without waiting for the user.
+alwaysApply: true
+---
+
+# LLM Wiki (Karpathy pattern)
+
+Workspace wiki root: [`wiki/`](../../wiki/). **You own the wiki layer** (markdown under `wiki/` except `wiki/raw/`). The user curates direction; you do filing, cross-links, and bookkeeping.
+
+## When to update (no reminder needed)
+
+Do **not** wait for “put this in the wiki.” After **substantive** work (research, debugging, design, ops), if **any** of this became true, integrate before you stop:
+
+- Non-obvious fact, constraint, or command that will matter in a **later** session.
+- A mistake, false assumption, or fix worth **not repeating**.
+- A stable decision or rationale **not** captured in an ADR, plan file, or scoped pipeline artifact.
+- A good synthesis, comparison, or answer the user might ask again — **file it**, not only chat.
+
+Skip trivia, secrets, one-off typos, or anything already the single source of truth in `pipelines/` scoped output or upstream submodule docs (link instead).
+
+## What to touch each time
+
+1. **Create or edit** the relevant topic/entity pages under `wiki/` (relative links between pages).
+2. Update [`wiki/index.md`](../../wiki/index.md): entry or one-line summary per page; keep categories honest.
+3. Append one line to [`wiki/log.md`](../../wiki/log.md): `## [YYYY-MM-DD] ingest \| Short title` or `query \|`, `lint \|`, `update \|` as appropriate.
+
+Optional **raw** inputs for later ingest live only under [`wiki/raw/`](../../wiki/raw/) (immutable for agents — summarize into wiki pages, do not edit sources).
+
+## Query habit
+
+When the user asks something that may already be compiled, **read `wiki/index.md` first**, then open linked pages. Prefer citing/updating the wiki over rediscovering from scratch.
+
+## Lint
+
+If the user asks to clean up the wiki, invokes **`@wiki-lint`**, or pages grow stale, run a **lint pass** per [`AGENTS.md`](../../AGENTS.md) (Trigger `@wiki-lint`): contradictions, orphans, missing links, stale claims; fix in place and log it.
