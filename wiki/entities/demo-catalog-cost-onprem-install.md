@@ -38,6 +38,26 @@ Use chart/script defaults unless you have a reason to override:
 6. **Install** — from `submodules/cost-onprem-chart`: `./scripts/install-helm-chart.sh` (set `S3_*` or use OBC auto-detection per doc).
 7. **RBAC post-install** — bootstrap admin or `sync-rbac-admin.sh` per [installation.md — Verification / RBAC](../../submodules/cost-onprem-chart/docs/operations/installation.md). Defaults for `rbac.bootstrapAdmin` match the user **`deploy-rhbk.sh`** creates.
 
+8. **Ultimate verification** — open the **UI Route**, complete Keycloak login, and confirm the **session sticks** (navigate in-app, wait past first API round-trips). If you are bounced back to Keycloak after a short delay, see [Post-login UI bounce](#post-login-ui-bounce-keycloak-ok-then-back-to-login) — pods can be “green” while auth is still miswired.
+
+## Post-login UI bounce (Keycloak OK, then back to login)
+
+Symptom: Keycloak accepts credentials, you briefly see the app, then you are sent to the **login** screen again. That usually means **downstream auth failed after OIDC**, not Keycloak rejecting the password.
+
+**Frequent root cause (RHBK / modern Keycloak):** The realm’s **declarative user profile** defaults to a small attribute set. **`org_id` and `account_number` are not accepted** until the profile allows them, so Keycloak can **drop** those user attributes even when `deploy-rhbk.sh` tries to set them—JWTs then lack claims Envoy needs. See **[Keycloak declarative profile vs JWT](known-issue-keycloak-declarative-profile-jwt.md)** and the [cost-onprem-chart-install skill](../../.cursor/skills/cost-onprem-chart-install/SKILL.md) script `scripts/keycloak-fix-org-jwt-claims.sh` (`verify` / `fix`).
+
+**Architecture (simplified):** Browser → **oauth2-proxy** (UI pod) → nginx → **Envoy gateway** → Koku / RBAC / ROS. The gateway’s Lua filter ([`cost-onprem/templates/gateway/configmap-envoy.yaml`](../../submodules/cost-onprem-chart/cost-onprem/templates/gateway/configmap-envoy.yaml)) builds `X-Rh-Identity` from the JWT. It **requires** top-level claims **`org_id`** and **`account_number`** in the token metadata; if either is missing it responds **`401`** with a body such as `Unauthorized: Missing org_id in JWT claims` or `Missing account_number in JWT claims`. The SPA then behaves like an unauthenticated user → redirect to Keycloak again.
+
+**Checks:**
+
+1. **Browser DevTools → Network** — after login, select a failing `/api/...` call; confirm status **401** and response body matches the Envoy messages above.
+2. **Decode the access token** (OAuth token used on API calls; jwt.io is fine for lab-only tokens) — verify **`iss`** matches `jwtAuth.keycloak.url` + `/realms/<realm>` (default realm from chart is **`kubernetes`**, matching [`deploy-rhbk.sh`](../../submodules/cost-onprem-chart/scripts/deploy-rhbk.sh) `REALM_NAME`). Verify **`aud`** includes **`cost-management-ui`**. Verify **`org_id`** and **`account_number`** exist at the **root** of the payload (not only in `id_token` / userinfo). If missing, confirm Keycloak **user profile** allows those attributes ([known issue](known-issue-keycloak-declarative-profile-jwt.md)), then protocol mappers / user attributes per realm import in `deploy-rhbk.sh`.
+3. **Gateway logs:** `oc logs -n cost-onprem -l app.kubernetes.io/component=gateway -c envoy --tail=200` and grep for `Missing org_id`, `Missing account_number`, `JWT auth ok`, or JWKS/TLS errors.
+4. **oauth2-proxy logs** (token refresh): `oc logs -n cost-onprem -l app.kubernetes.io/component=ui -c oauth-proxy --tail=200` — refresh failures (TLS to Keycloak, wrong issuer, revoked client) often surface **after** the first minutes (`ui.oauthProxy.cookie.refresh` vs realm access token TTL in realm import).
+5. **RBAC / hooks** — if Helm was upgraded with **`--no-hooks`**, ensure **`cost-onprem-rbac-migrate`** ran successfully at least once; otherwise APIs may return **403**; some UI paths may still feel like “logout”. Re-run migrate job or `sync-rbac-admin.sh` per installation doc.
+
+**Ingress image:** chart default tag for `ingress.image.tag` can expire on Quay; **ImagePullBackOff** on `cost-onprem-ingress` breaks uploads but is separate from UI login. Override with a current tag (e.g. `skopeo inspect` the repo) via `--set ingress.image.tag=...` on install/upgrade.
+
 ## RHBK (Red Hat Build of Keycloak): `deploy-rhbk.sh`
 
 - **Purpose:** Installs the RHBK **operator** (OLM), **PostgreSQL** for Keycloak’s DB in the Keycloak namespace, the **Keycloak** CR (`k8s.keycloak.org/v2alpha1`), realm **`kubernetes`**, OAuth clients **`cost-management-operator`** and **`cost-management-ui`**, and Kubernetes secrets **`keycloak-client-secret-<client-id>`** that [`install-helm-chart.sh`](../../submodules/cost-onprem-chart/scripts/install-helm-chart.sh) uses for JWT Helm `--set`s and **UI OAuth** (`create_ui_secrets`).
@@ -56,5 +76,6 @@ Use chart/script defaults unless you have a reason to override:
 ## Related
 
 - [Workspace overview](../workspace/overview.md)
+- [Known issue: Keycloak declarative profile vs JWT](known-issue-keycloak-declarative-profile-jwt.md)
 - Skill: [`.cursor/skills/cost-onprem-chart-install/SKILL.md`](../../.cursor/skills/cost-onprem-chart-install/SKILL.md)
 - Submodule testing/CI context: [`submodules/cost-onprem-chart/.cursor/rules/testing.mdc`](../../submodules/cost-onprem-chart/.cursor/rules/testing.mdc) (CI order: RHBK → Kafka → chart — same idea locally)

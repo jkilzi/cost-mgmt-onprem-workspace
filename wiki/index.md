@@ -16,7 +16,8 @@ Catalog of pages in this workspace wiki. **Agents:** keep this list accurate whe
 
 | Page | Summary |
 |------|---------|
-| [entities/demo-catalog-cost-onprem-install.md](entities/demo-catalog-cost-onprem-install.md) | Demo Catalog leased SNO + pre-scoped projects; install order (S3 → Kafka → **RHBK** → UWM → chart → RBAC); `deploy-rhbk.sh` vs empty `keycloak` NS; skill link. |
+| [entities/demo-catalog-cost-onprem-install.md](entities/demo-catalog-cost-onprem-install.md) | Demo Catalog SNO install order; RHBK; **UI login bounce** (Envoy JWT + Keycloak declarative profile); debug commands; ingress tag expiry note. |
+| [entities/known-issue-keycloak-declarative-profile-jwt.md](entities/known-issue-keycloak-declarative-profile-jwt.md) | **Known issue:** Keycloak default user profile drops `org_id`/`account_number` → Envoy 401 → UI re-login; skill script workaround + scenarios. |
 
 ## Sources ingested
 

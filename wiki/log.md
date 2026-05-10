@@ -49,3 +49,11 @@ Added `wiki/entities/demo-catalog-cost-onprem-install.md` (SNO lease, pre-scoped
 ## [2026-05-10] update | RHBK + cost-onprem install skill
 
 Expanded `wiki/entities/demo-catalog-cost-onprem-install.md` with `deploy-rhbk.sh` section, empty-`keycloak`-project vs RHBK detection, revised install order. Added `.cursor/skills/cost-onprem-chart-install/SKILL.md`; routing in `AGENTS.md` and `wiki/workspace/overview.md`; refreshed `wiki/index.md` entity summary.
+
+## [2026-05-10] update | UI login bounce (Envoy JWT) doc
+
+Documented post-Keycloak “bounce to login” as Envoy/Lua **401** when `org_id` / `account_number` missing from access token; added debug steps and RBAC/hooks note to `wiki/entities/demo-catalog-cost-onprem-install.md` and `.cursor/skills/cost-onprem-chart-install/SKILL.md`; index entity summary tweaked.
+
+## [2026-05-10] update | Keycloak declarative profile JWT workaround
+
+Added `wiki/entities/known-issue-keycloak-declarative-profile-jwt.md`, skill script `.cursor/skills/cost-onprem-chart-install/scripts/keycloak-fix-org-jwt-claims.sh` (`verify`/`fix`), **Known issue** + install-step row in `SKILL.md`; cross-links in `wiki/index.md` and `wiki/entities/demo-catalog-cost-onprem-install.md`.
