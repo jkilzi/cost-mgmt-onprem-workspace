@@ -2,7 +2,7 @@
 
 ## Upstream repository
 
-https://github.com/project-koku/koku-ui.git
+[https://github.com/project-koku/koku-ui.git](https://github.com/project-koku/koku-ui.git)
 
 ## Mission
 
@@ -15,3 +15,4 @@ Monorepo for Cost Management user interfaces: multiple apps and shared libraries
 - PatternFly v6 (`@patternfly/react-core`, charts, tables, component groups, icons)
 - Cypress for UI testing where configured per app
 - Root scripts orchestrate builds and on-prem dev flows across `apps/*` and `libs/*`
+

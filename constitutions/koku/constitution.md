@@ -18,4 +18,7 @@ Koku provides an open-source cost management solution for cloud and hybrid cloud
 - Dependency and venv workflow: Pipenv and `Pipfile`; Docker-based local development
 - Pre-commit hooks; CI via GitHub Actions
 
-Upstream issue tracking: [COST](https://issues.redhat.com/projects/COST/) (see project README).
+Upstream issue tracking: 
+
+- [COST](https://issues.redhat.com/projects/COST/) (see project README).
+- [FLPATH + Component: "insigts-onprem"](https://issues.redhat.com/projects/FLPATH/) for on-prem related work.
