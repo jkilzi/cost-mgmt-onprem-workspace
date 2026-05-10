@@ -1,0 +1,45 @@
+---
+description: >-
+  RPI v1 (research → plan → implement → verify): scoped markdown under
+  pipelines/rpi/v1/stages/*/output/<scope>/; follow layered SPEC.md specs;
+  @rpi-status per pipelines/rpi/SPEC.md. Submodule work: branch-from-default rule.
+alwaysApply: false
+---
+
+# RPI pipeline (v1) — agent index
+
+**Do not treat this file as the full pipeline spec.** Normative step-by-step behavior, gates, filenames, and the **`@rpi-status`** response schema live in the **layered markdown** under [`pipelines/rpi/`](../../pipelines/rpi/). Open the relevant `SPEC.md` for the layer you are executing or reviewing.
+
+## What RPI is here
+
+This workspace runs **[Research–Plan–Implement](https://gist.github.com/y0n1/079f952e5f12857a9ef53a0013f5730e)** plus **`40-verify`**, using **stage specs + scoped `output/<scope>/`** (ICM-style handoffs). Framing, external links, and when to use or skip RPI: **[`pipelines/rpi/SPEC.md`](../../pipelines/rpi/SPEC.md)**.
+
+## Layer map (specs)
+
+| Stage | Role (summary) | Spec (full behavior) |
+|-------|----------------|----------------------|
+| **10-research** | Bootstrap scope; facts-only **`RESEARCH.md`**; optional **`QUESTIONS.md`**; **FAR** gate | [`pipelines/rpi/v1/stages/10-research/SPEC.md`](../../pipelines/rpi/v1/stages/10-research/SPEC.md) |
+| **20-plan** | Executable **`PLAN.md`** with checkboxes; **FACTS** gate | [`pipelines/rpi/v1/stages/20-plan/SPEC.md`](../../pipelines/rpi/v1/stages/20-plan/SPEC.md) |
+| **30-implement** | Mechanical execution from **`PLAN.md`**; **`IMPLEMENTATION_LOG.md`**; pause on failure | [`pipelines/rpi/v1/stages/30-implement/SPEC.md`](../../pipelines/rpi/v1/stages/30-implement/SPEC.md) |
+| **40-verify** | Evidence in **`VERIFICATION.md`**; pass/fail and follow-ups | [`pipelines/rpi/v1/stages/40-verify/SPEC.md`](../../pipelines/rpi/v1/stages/40-verify/SPEC.md) |
+
+**Pipeline-wide (scopes, artifact chain, triggers):** [`pipelines/rpi/SPEC.md`](../../pipelines/rpi/SPEC.md).
+
+## Output layout (reminder)
+
+- **Pattern:** `pipelines/rpi/v1/stages/<stage>/output/<scope>/`
+- **`<scope>`** naming, discovery, and artifact sequence (**`SCOPE.md` → `RESEARCH.md` → …**) are defined in **[`pipelines/rpi/SPEC.md`](../../pipelines/rpi/SPEC.md)**—do not invent a parallel scheme here.
+
+## Conversation trigger
+
+**`@rpi-status`** — non-destructive status summary. **Normative response shape** (scopes, per-stage files, anomalies, next action): section **Trigger: `@rpi-status`** in **[`pipelines/rpi/SPEC.md`](../../pipelines/rpi/SPEC.md)**.
+
+Human-oriented trigger table: [`AGENTS.md`](../../AGENTS.md) (**Triggers**).
+
+## Submodule implementation
+
+Edits under **`submodules/<name>/`**: branch from that repo’s default branch; superproject gitlink when HEAD changes — **[`.cursor/rules/submodule-git-workflow.mdc`](submodule-git-workflow.mdc)** (also referenced from **30-implement** spec).
+
+## Mission and trackers
+
+Per-project context and inbox format: **`constitutions/<name>/`**; tracker formatting skill: [`constitutions-tracker-format`](../skills/constitutions-tracker-format/SKILL.md).

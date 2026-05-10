@@ -7,7 +7,27 @@ alwaysApply: true
 
 # LLM Wiki (Karpathy pattern)
 
-Workspace wiki root: [`wiki/`](../../wiki/). **You own the wiki layer** (markdown under `wiki/` except `wiki/raw/`). The user curates direction; you do filing, cross-links, and bookkeeping.
+## Purpose
+
+Turn substantive work into a **durable knowledgebase**—facts, constraints, decisions, and “do not repeat” mistakes—using Karpathy’s [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f).
+
+This file is the **authoritative spec** for wiki layering, how agents maintain markdown, and **`@wiki-lint`**. Do not duplicate that contract under `docs/`. **Roles:** the user steers topics; agents write and cross-link pages, keep the catalog and log current, and evolve this rule with the human. Triggers and repo-wide routing: [`AGENTS.md`](../../AGENTS.md).
+
+## Layers
+
+**Flow:** raw drops → curated wiki → ops contract (this rule; human + agent).
+
+| Layer | Location | Who edits |
+|-------|----------|-----------|
+| Raw sources (immutable) | [`wiki/raw/`](../../wiki/raw/) | Human drops files; agents read only |
+| Wiki pages + catalog | [`wiki/`](../../wiki/) ([`wiki/index.md`](../../wiki/index.md), [`wiki/log.md`](../../wiki/log.md)) | Agents create/update pages, cross-links, index, and log |
+| Ops contract (when/how to maintain the wiki) | This file (`.cursor/rules/llm-wiki.mdc`) | Human + agent co-evolve |
+
+## Operations (at a glance)
+
+- **Ingest** — Read sources or conversation; write/update wiki pages; refresh the index; append the log.
+- **Query** — Read `wiki/index.md` first, then drill into linked pages; file durable answers back into the wiki.
+- **Lint** — On request, when the wiki is large, or when the user invokes **`@wiki-lint`** — follow [**Lint**](#lint) below.
 
 ## When to update (no reminder needed)
 
@@ -34,4 +54,15 @@ When the user asks something that may already be compiled, **read `wiki/index.md
 
 ## Lint
 
-If the user asks to clean up the wiki, invokes **`@wiki-lint`**, or pages grow stale, run a **lint pass** per [`AGENTS.md`](../../AGENTS.md) (Trigger `@wiki-lint`): contradictions, orphans, missing links, stale claims; fix in place and log it.
+**Purpose:** Review `wiki/` for consistency and navigability. May propose or apply **markdown-only** fixes (cross-links, index rows, log append); do **not** modify files under [`wiki/raw/`](../../wiki/raw/).
+
+Run a lint pass when the user asks to clean up the wiki, invokes **`@wiki-lint`**, or pages grow stale.
+
+### When the user invokes `@wiki-lint`
+
+Respond with:
+
+1. **Scope:** All markdown under [`wiki/`](../../wiki/) except [`wiki/raw/`](../../wiki/raw/) (immutable sources).
+2. **Findings:** Contradictions between pages; stale or superseded claims; orphan pages (no inbound link from [`wiki/index.md`](../../wiki/index.md) or another wiki page); broken relative links; index entries pointing to missing files; important topics mentioned without a page.
+3. **Actions:** List concrete edits (paths + intent). Apply fixes when safe; otherwise leave as recommendations.
+4. **Log:** If any wiki file changed, append an entry to [`wiki/log.md`](../../wiki/log.md): `## [YYYY-MM-DD] lint | Short summary`.

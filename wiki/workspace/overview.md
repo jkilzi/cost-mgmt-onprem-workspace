@@ -9,4 +9,7 @@ This wiki is the **compounding layer**: durable, cross-cutting knowledge that sh
 ## Related
 
 - [Entry index](../index.md)
-- [AGENTS.md](../../AGENTS.md) — routing and triggers
+- [AGENTS.md](../../AGENTS.md) — identity, purpose, folder map, routing, triggers
+- [`.cursor/rules/rpi-pipeline.mdc`](../../.cursor/rules/rpi-pipeline.mdc) — RPI v1 index to `pipelines/rpi/` layered `SPEC.md` files and `@rpi-status`
+- [`.cursor/rules/llm-wiki.mdc`](../../.cursor/rules/llm-wiki.mdc) — wiki layers, ingest/query/lint ops, `@wiki-lint` procedure
+- Submodule Git: [`.cursor/rules/submodule-git-workflow.mdc`](../../.cursor/rules/submodule-git-workflow.mdc)

@@ -6,7 +6,7 @@ Catalog of pages in this workspace wiki. **Agents:** keep this list accurate whe
 
 | Page | Summary |
 |------|---------|
-| [workspace/overview.md](workspace/overview.md) | Cost Management workspace: purpose, boundaries, and how this wiki relates to pipelines and submodules. |
+| [workspace/overview.md](workspace/overview.md) | Cost Management workspace: purpose, boundaries, relation to pipelines/submodules; links to `AGENTS.md`, `.cursor/rules/rpi-pipeline.mdc`, and `.cursor/rules/llm-wiki.mdc`. |
 
 ## Concepts
 
