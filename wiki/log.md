@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-12] update | RPI scope dirs aligned to ticket-id default
+
+Renamed `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-3424` → `flpath-3424` and `cost-onprem-chart__flpath-4164` → `flpath-4164`; updated `SCOPE.md` / `RESEARCH.md` / `QUESTIONS.md` scope keys and cross-links; refreshed prior `wiki/log.md` path references; generalized legacy-scope wording in `pipelines/rpi/SPEC.md`.
+
 ## [2026-05-12] update | Remove constitution trackers from workspace contract
 
 Dropped `constitutions/*/tracker.md`, the `constitutions-tracker-format` skill, and pipeline/RPI references; work streams stay under `pipelines/rpi/v1/stages/*/output/<scope>/` and `submodule-git-workflow.mdc` remains the submodule Git SoT.
@@ -12,15 +16,15 @@ Rewrote `.cursor/skills/git-submodules-status/`: `references/config.json` (+ JSO
 
 ## [2026-05-11] update | FLPATH-4164 MFE pattern (koku-ui-hccm → koku-ui-onprem)
 
-Expanded `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-4164/RESEARCH.md` with codebase-grounded Scalprum/DynamicRemotePlugin/host checklist for embedding insights-rbac-ui vs sibling nginx UI.
+Expanded `pipelines/rpi/v1/stages/10-research/output/flpath-4164/RESEARCH.md` with codebase-grounded Scalprum/DynamicRemotePlugin/host checklist for embedding insights-rbac-ui vs sibling nginx UI.
 
 ## [2026-05-11] ingest | RPI 10-research bootstrap FLPATH-4164
 
-Scope `cost-onprem-chart__flpath-4164`: `SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md` under `pipelines/rpi/v1/stages/10-research/output/` (RBAC UI container POC vs chart `/api/rbac/` routing and FLPATH-3424 linkage).
+Scope `flpath-4164`: `SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md` under `pipelines/rpi/v1/stages/10-research/output/` (RBAC UI container POC vs chart `/api/rbac/` routing and FLPATH-3424 linkage).
 
 ## [2026-05-10] ingest | FLPATH-3424 QUESTIONS.md answers
 
-Recorded stakeholder decisions in `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-3424/QUESTIONS.md`; added **Stakeholder decisions** table to `RESEARCH.md` (MFE in koku-ui-onprem, RBAC API chart commit, shared Keycloak realm; FLPATH-4121/4152/4164 pointers).
+Recorded stakeholder decisions in `pipelines/rpi/v1/stages/10-research/output/flpath-3424/QUESTIONS.md`; added **Stakeholder decisions** table to `RESEARCH.md` (MFE in koku-ui-onprem, RBAC API chart commit, shared Keycloak realm; FLPATH-4121/4152/4164 pointers).
 
 ## [2026-05-07] bootstrap | Initial Karpathy-style scaffold
 
@@ -60,7 +64,7 @@ Renamed `pipelines/rpi/CONTEXT.md` and each `v1/stages/*/CONTEXT.md` to **`SPEC.
 
 ## [2026-05-10] ingest | RPI 10-research bootstrap FLPATH-3424
 
-Scope `cost-onprem-chart__flpath-3424`: `SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md` under `pipelines/rpi/v1/stages/10-research/output/` (on-prem RBAC UI vs current ENHANCED_ORG_ADMIN + `koku-ui/insights-rbac-ui` tree).
+Scope `flpath-3424`: `SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md` under `pipelines/rpi/v1/stages/10-research/output/` (on-prem RBAC UI vs current ENHANCED_ORG_ADMIN + `koku-ui/insights-rbac-ui` tree).
 
 ## [2026-05-10] ingest | Demo Catalog cost-onprem install wiki
 
