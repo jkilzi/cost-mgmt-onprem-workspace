@@ -2,6 +2,18 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-12] update | git-submodules-status skill (UC1–UC3)
+
+Rewrote `.cursor/skills/git-submodules-status/`: `references/config.json` (+ JSON Schema `config.schema.json`, gitignored data file), script modes `--show` / `--fix-print` / `--fix-apply`; upstream name per submodule only; drift = local default branch vs `refs/remotes/<upstream>/<default>` (not HEAD).
+
+## [2026-05-11] update | FLPATH-4164 MFE pattern (koku-ui-hccm → koku-ui-onprem)
+
+Expanded `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-4164/RESEARCH.md` with codebase-grounded Scalprum/DynamicRemotePlugin/host checklist for embedding insights-rbac-ui vs sibling nginx UI.
+
+## [2026-05-11] ingest | RPI 10-research bootstrap FLPATH-4164
+
+Scope `cost-onprem-chart__flpath-4164`: `SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md` under `pipelines/rpi/v1/stages/10-research/output/` (RBAC UI container POC vs chart `/api/rbac/` routing and FLPATH-3424 linkage).
+
 ## [2026-05-10] ingest | FLPATH-3424 QUESTIONS.md answers
 
 Recorded stakeholder decisions in `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-3424/QUESTIONS.md`; added **Stakeholder decisions** table to `RESEARCH.md` (MFE in koku-ui-onprem, RBAC API chart commit, shared Keycloak realm; FLPATH-4121/4152/4164 pointers).

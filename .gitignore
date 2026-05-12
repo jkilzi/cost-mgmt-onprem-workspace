@@ -1,2 +1,5 @@
 .DS_Store
 .playwright-mcp
+
+# Local upstream mapping for git-submodules-status skill (see references/config.schema.json)
+.cursor/skills/git-submodules-status/references/config.json
