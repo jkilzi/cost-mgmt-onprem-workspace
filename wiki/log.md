@@ -2,6 +2,18 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-14] update | FLPATH-4164 Jira carry-forward + scope/PLAN handoff
+
+Digest comment on **FLPATH-4164** (4180 conclusions); `flpath-4164/SCOPE.md` prerequisite note; `flpath-4180/PLAN.md` handoff line.
+
+## [2026-05-14] ingest | Jira handoff without public repo
+
+Added `wiki/workspace/jira-handoff-without-public-repo.md`; linked from `wiki/workspace/overview.md`, `wiki/index.md`, and `wiki/entities/flpath-4180-fec-rbac-mfe.md` (paste summaries + carry-forward to implementation tickets).
+
+## [2026-05-14] update | FLPATH-4180 Jira closeout (RPI plan)
+
+Jira **FLPATH-4180** commented with RPI artifact paths; transitioned **Closed** / resolution **Done**; `flpath-4180/PLAN.md` closeout checkboxes marked.
+
 ## [2026-05-14] update | RPI 20-plan FLPATH-4164 + 4180
 
 Added `pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md` (MFE POC phases 0–7, FACTS) and `flpath-4180/PLAN.md` (research closeout); refreshed `flpath-4164/RESEARCH.md` FAR pointer to **`30-implement`**.

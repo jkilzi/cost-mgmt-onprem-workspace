@@ -6,6 +6,10 @@ This repository is a **Cost Management** meta-workspace: orchestration (e.g. RPI
 
 This wiki is the **compounding layer**: durable, cross-cutting knowledge that should not be re-derived every session. Scoped pipeline artifacts live under `pipelines/rpi/v1/stages/*/output/<scope>/`; submodule upstream truth lives in `submodules/<name>/`. The wiki links and summarizes what matters **across** those boundaries.
 
+## Jira without a public repo
+
+Research and plans often live under `pipelines/rpi/…` in this **private** meta-repo. **Jira comments that only list file paths are not enough** for most readers. See **[Jira handoff when this workspace is not published](jira-handoff-without-public-repo.md)** for the recommended pattern (self-contained Jira text + carry-forward into the implementation ticket; optional attachments).
+
 ## Related
 
 - [Entry index](../index.md)
