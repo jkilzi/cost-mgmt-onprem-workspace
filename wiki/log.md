@@ -2,6 +2,14 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-12] ingest | FLPATH-4164 QUESTIONS + FLPATH-4180 dependency
+
+Recorded stakeholder answers in `flpath-4164/QUESTIONS.md` (full-surface POC, no insights-rbac-ui edits; chart `main` + branch `feat/flpath-4164`); added **FLPATH-4180** FEC/extension-points prerequisite to `RESEARCH.md` / `SCOPE.md`; linked **FLPATH-4180 Blocks FLPATH-4164** in Jira.
+
+## [2026-05-12] ingest | FLPATH-4164 research resync (Jira MFE ticket)
+
+Refreshed `pipelines/rpi/v1/stages/10-research/output/flpath-4164/RESEARCH.md`, `SCOPE.md`, `QUESTIONS.md` from current Jira (Goal/Context/AC, **FLPATH-4073**, out-of-scope standalone nginx); archived superseded container-only wording; marked URL/API/Quay questions resolved.
+
 ## [2026-05-12] update | RPI scope dirs aligned to ticket-id default
 
 Renamed `pipelines/rpi/v1/stages/10-research/output/cost-onprem-chart__flpath-3424` → `flpath-3424` and `cost-onprem-chart__flpath-4164` → `flpath-4164`; updated `SCOPE.md` / `RESEARCH.md` / `QUESTIONS.md` scope keys and cross-links; refreshed prior `wiki/log.md` path references; generalized legacy-scope wording in `pipelines/rpi/SPEC.md`.
