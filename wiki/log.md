@@ -2,6 +2,14 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-14] update | FLPATH-4180 QUESTIONS resolved (insights-rbac-ui submodule)
+
+`flpath-4180/QUESTIONS.md`: no **ExtensionsPlugin** in `fec.config.js`; enumerated **`useChrome`** APIs + **RBACHook** / Unleash; shell-only **`Route`+`ScalprumComponent`** compatible with RBAC **`Routing.tsx`**. `RESEARCH.md` + wiki entity takeaway updated.
+
+## [2026-05-14] ingest | RPI 10-reresearch FLPATH-4180 (FEC vs on-prem MFE)
+
+Bootstrap `pipelines/rpi/v1/stages/10-research/output/flpath-4180/` (`SCOPE.md`, `RESEARCH.md`, `QUESTIONS.md`): `ExtensionsPlugin` / extension types from frontend-components fed docs vs `DynamicRemotePlugin` + Scalprum in `koku-ui`; wiki entity page + index row.
+
 ## [2026-05-12] ingest | FLPATH-4164 QUESTIONS + FLPATH-4180 dependency
 
 Recorded stakeholder answers in `flpath-4164/QUESTIONS.md` (full-surface POC, no insights-rbac-ui edits; chart `main` + branch `feat/flpath-4164`); added **FLPATH-4180** FEC/extension-points prerequisite to `RESEARCH.md` / `SCOPE.md`; linked **FLPATH-4180 Blocks FLPATH-4164** in Jira.
