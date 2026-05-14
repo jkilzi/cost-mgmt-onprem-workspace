@@ -8,6 +8,7 @@ Catalog of pages in this workspace wiki. **Agents:** keep this list accurate whe
 |------|---------|
 | [workspace/overview.md](workspace/overview.md) | Cost Management workspace: purpose, boundaries, relation to pipelines/submodules; links to `AGENTS.md`, `.cursor/rules/rpi-pipeline.mdc`, and `.cursor/rules/llm-wiki.mdc`. |
 | [workspace/jira-handoff-without-public-repo.md](workspace/jira-handoff-without-public-repo.md) | How to make RPI / research outcomes discoverable in **Jira** when this workspace is not published (paste summary, carry-forward to implementation ticket, attachments). |
+| [workspace/jira-cli-issue-links.md](workspace/jira-cli-issue-links.md) | Change Jira issue link type with **`jira`**: unlink inward/outward pair, link again (`Related` vs `Relates` on redhat.atlassian.net); verify with `jira issue view`. |
 
 ## Concepts
 

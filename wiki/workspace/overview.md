@@ -10,6 +10,8 @@ This wiki is the **compounding layer**: durable, cross-cutting knowledge that sh
 
 Research and plans often live under `pipelines/rpi/…` in this **private** meta-repo. **Jira comments that only list file paths are not enough** for most readers. See **[Jira handoff when this workspace is not published](jira-handoff-without-public-repo.md)** for the recommended pattern (self-contained Jira text + carry-forward into the implementation ticket; optional attachments).
 
+**Issue links:** To replace **Blocks** with **Related** (or any type change), Jira has no in-place edit — use **`jira issue unlink`** then **`jira issue link`** — see **[Jira CLI: change issue link type](jira-cli-issue-links.md)**.
+
 ## Related
 
 - [Entry index](../index.md)
