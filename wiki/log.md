@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-14] update | wiki index + entity FLPATH-4164
+
+Added `wiki/entities/flpath-4164-rbac-mfe-poc.md` and index row (MFE POC + UX vision pointer).
+
 ## [2026-05-14] update | FLPATH-4164 research/plan — 4180 complete + UX mock
 
 Refreshed `flpath-4164/RESEARCH.md` (4180 prerequisite **closed**, **UX vision** § + Jira links; fixed `20-plan` relative links); `flpath-4164/PLAN.md` (UX reference, Phase 0/2 nav + success); `flpath-4164/SCOPE.md`; `flpath-4180/RESEARCH.md` Jira status row; `wiki/entities/flpath-4180-fec-rbac-mfe.md` (closed + screenshot pointer).
