@@ -77,6 +77,7 @@ Optional env vars: `RHBK_NAMESPACE`, `REALM_NAME`, `KEYCLOAK_USERNAME`, `ORG_ID`
 
 ## RHBK nuances
 
+- **CSV Failed (`TooManyOperatorGroups`):** duplicate OperatorGroup in `keycloak` — see [wiki/entities/known-issue-rhbk-csv-too-many-operatorgroups.md](../../wiki/entities/known-issue-rhbk-csv-too-many-operatorgroups.md).
 - Default **`RHBK_NAMESPACE`** / target: **`keycloak`**. **`COST_MGMT_NAMESPACE`** / **`COST_MGMT_RELEASE_NAME`** default to **`cost-onprem`** — used for UI redirect URIs; script can **construct** the UI URL before the UI Route exists.
 - **`install-helm-chart.sh help`** says RHBK is “optional”; for **standard OpenShift JWT + oauth2-proxy UI login**, treat **`deploy-rhbk.sh` as required** unless Keycloak realm/clients/secrets are replicated manually.
 - Missing UI client secret: `create_ui_secrets` **warns** and continues — do not treat green Helm as proof of working login.

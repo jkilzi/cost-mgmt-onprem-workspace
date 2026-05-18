@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-18] ingest | RHBK CSV TooManyOperatorGroups known issue
+
+Documented duplicate OperatorGroup → CSV Failed; non-disruptive fix (delete `rhbk-operator-group`, keep `keycloak-og`); `deploy-rhbk.sh` OG guard; wiki entity + demo-catalog cross-link.
+
 ## [2026-05-18] update | sources-ui reference submodule
 
 Added `submodules/sources-ui` (RedHatInsights/sources-ui); constitution + wiki entity; C4 repo map notes **sources-api-go** as SaaS backend (not a submodule).
