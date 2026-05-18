@@ -7,3 +7,13 @@
 **Prerequisite (closed):** [FLPATH-4180](https://redhat.atlassian.net/browse/FLPATH-4180) — see [`flpath-4180-fec-rbac-mfe.md`](flpath-4180-fec-rbac-mfe.md).
 
 **UX vision (product):** On **FLPATH-4164**, Jira **comment +** `ux-vision-my-user-access-cost-onprem.png` (Identity and Access Management shell, **My User Access**); session context: [FLPATH-3424 focused comment](https://redhat.atlassian.net/browse/FLPATH-3424?focusedCommentId=16901888).
+
+## Implementation status (2026-05-18)
+
+| Layer | State |
+|-------|--------|
+| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; `npm run verify:onprem` ✅ |
+| Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider`, chrome + notification shims |
+| Image | `Containerfile` serves `./rbac` alongside other MFE remotes |
+| Branch | `submodules/koku-ui` → `feat/flpath-4164` |
+| Next | Phase 7: `start:onprem:dev` + cluster UI image verification |

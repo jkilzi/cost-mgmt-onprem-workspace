@@ -154,6 +154,10 @@ Documented post-Keycloak “bounce to login” as Envoy/Lua **401** when `org_id
 
 Added `wiki/entities/known-issue-keycloak-declarative-profile-jwt.md`, skill script `.cursor/skills/cost-onprem-chart-install/scripts/keycloak-fix-org-jwt-claims.sh` (`verify`/`fix`), **Known issue** + install-step row in `SKILL.md`; cross-links in `wiki/index.md` and `wiki/entities/demo-catalog-cost-onprem-install.md`.
 
+## [2026-05-18] update | FLPATH-4164 checkpoint (Phases 3, 6, verify)
+
+Host `FlagProvider`, `Containerfile` `./rbac`, plan drift fix; `setup-onprem-env.sh` works with restored metrics CR; `VERIFICATION.md` partial pass.
+
 ## [2026-05-17] update | FLPATH-4164 Phase 1 verify + Phase 2 host
 
 `verify-onprem-rbac.sh` finds `Iam` bundle under `dist/exposed-./`; `koku-ui-onprem` static `/rbac/`, `/api/rbac` proxy, `/iam/*` route + nav; PLAN/IMPLEMENTATION_LOG + `wiki/entities/flpath-4164-rbac-mfe-poc.md`.
