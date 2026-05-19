@@ -8,12 +8,14 @@
 
 **UX vision (product):** On **FLPATH-4164**, Jira **comment +** `ux-vision-my-user-access-cost-onprem.png` (Identity and Access Management shell, **My User Access**); session context: [FLPATH-3424 focused comment](https://redhat.atlassian.net/browse/FLPATH-3424?focusedCommentId=16901888).
 
-## Implementation status (2026-05-18)
+## Implementation status (2026-05-19)
 
 | Layer | State |
 |-------|--------|
-| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; `npm run verify:onprem` ✅ |
-| Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider`, chrome + notification shims |
-| Image | `Containerfile` serves `./rbac` alongside other MFE remotes |
+| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam` (lazy entry); `RBACHook` shim; `npm run verify:onprem` ✅ |
+| Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider` under `ScalprumProvider`, chrome stub |
+| Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
+| Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc14` — hybrid pack; see [`IMPLEMENTATION_LOG.md`](../../pipelines/rpi/v1/stages/30-implement/output/flpath-4164/IMPLEMENTATION_LOG.md) § Hybrid amd64 pack |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
-| Next | Phase 7: `start:onprem:dev` + cluster UI image verification |
+| Verified | Overview + **My User Access** on `<leased-cluster>` (2026-05-19) |
+| Next | Bugfixes / PR split (chart + koku-ui); optional full Helm upgrade when hooks unblocked |

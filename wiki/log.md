@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-19] update | FLPATH-4164 rc14 verify + hybrid pack recipe
+
+Cluster **Overview + IAM** pass on `flpath-4164-rc14`; `IMPLEMENTATION_LOG.md` hybrid amd64 pack steps; `VERIFICATION.md` and wiki entity updated; koku-ui lazy IAM entry + rbac webpack fixes committed.
+
 ## [2026-05-18] ingest | RPI verify UI acceptance gate
 
 `40-verify` / `20-plan` / `pipelines/rpi/SPEC.md`: **`ACCEPTANCE_CRITERIA.md`** human gate before execution; UI streams require E2E exercise; wiki topic `topics/rpi-verify-ui-acceptance.md`.
