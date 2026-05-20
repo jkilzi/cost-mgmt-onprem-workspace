@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-21] update | FLPATH-4164 rc18 — cluster UI (IAM nav)
+
+`flpath-4164-rc18` on `<leased-cluster>` (`oc set image`); single-tree `build:onprem` pack; in-pod `/rbac/plugin-manifest.json` **200**. `ui-image-values.yaml` + IMPLEMENTATION_LOG + wiki entity.
+
 ## [2026-05-21] update | IAM nav `/iam` prefix regression tests
 
 Cypress `03-iam-sidebar-navigation`: IAM-to-IAM hops assert full `/iam/...` pathnames and anchor hrefs; fix host nav to use `<a href>` not basename-relative `<Link>`. Live gate **16/16**.
