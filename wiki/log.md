@@ -2,6 +2,34 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-19] update | FLPATH-4164 rc16 — cluster IAM freeze (SkeletonTableBody barrel)
+
+RolesTable imported SkeletonTableBody from package root; shared PF chunk 6658 on cluster caused ThBase loop. Barrel shim + drop component-groups from rbac sharedModules → `flpath-4164-rc16` deployed.
+
+## [2026-05-19] update | FLPATH-4164 rc15 ship + verify closeout
+
+Hybrid pack `flpath-4164-rc15` deployed on <leased-cluster>; local `verify:onprem-nav` 5/5 after restoring `useChrome` singleton (first rc15 pack missed it). Added `ACCEPTANCE_CRITERIA.md`; updated `VERIFICATION.md`.
+
+## [2026-05-19] update | FLPATH-4164 research consolidated into PLAN.md
+
+`10-research` (SCOPE, RESEARCH, QUESTIONS) + `NAV-DIAGNOSIS` merged into [`pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md`](../../pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md) § Research digest + Phase 8; research files retain facts with pointers.
+
+## [2026-05-19] update | FLPATH-4164 IAM blank page — stable useChrome
+
+On-prem `useChrome` returned a new object every call → `useIdentity`/`IamV1` maximum update depth; fixed singleton API. With `useAppLink` shim + host basename, `verify:onprem-nav` 5/5.
+
+## [2026-05-19] update | FLPATH-4164 IAM nav fix (MemoryRouter + shims)
+
+`rbac-ui-onprem`: MemoryRouter `basename=/iam`; PF skeleton/table shims; host Phase 2 nav. `verify:onprem-nav` 5/5 local.
+
+## [2026-05-19] ingest | FLPATH-4164 IAM nav root-cause diagnosis
+
+Playwright: IAM route freezes main thread (`Maximum update depth` in SkeletonTable/AppPlaceholder); sidebar toggle hangs on `/iam/*` but not on cost. Plan: [`pipelines/rpi/v1/stages/20-plan/output/flpath-4164/NAV-DIAGNOSIS.md`](../../pipelines/rpi/v1/stages/20-plan/output/flpath-4164/NAV-DIAGNOSIS.md).
+
+## [2026-05-19] update | FLPATH-4164 Optimizations↔IAM nav freeze
+
+Host `NavItem`: full page navigation when leaving `/iam/*` for cost routes (IAM catch-all blocked SPA `Link`); reverted sticky remote mount.
+
 ## [2026-05-19] update | FLPATH-4164 rc14 verify + hybrid pack recipe
 
 Cluster **Overview + IAM** pass on `flpath-4164-rc14`; `IMPLEMENTATION_LOG.md` hybrid amd64 pack steps; `VERIFICATION.md` and wiki entity updated; koku-ui lazy IAM entry + rbac webpack fixes committed.
