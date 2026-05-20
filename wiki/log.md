@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-20] update | FLPATH-4164 Playwright e2e on koku-ui-onprem
+
+Moved `apps/rbac-ui-onprem/e2e/` → `apps/koku-ui-onprem/e2e/`; Playwright devDependency on host app (removed from koku-ui root). `verify:onprem-e2e` / `verify:onprem-nav` run via `@koku-ui/koku-ui-onprem`. Cypress specs untouched.
+
 ## [2026-05-20] update | FLPATH-4164 AC only in RPI 40-verify
 
 Removed `apps/rbac-ui-onprem/e2e/ACCEPTANCE_CRITERIA.md`; consolidated checklist in `pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md` (UI-modifying gate, preconditions, 3/3 + 5/5). E2E README points to pipeline SoT.

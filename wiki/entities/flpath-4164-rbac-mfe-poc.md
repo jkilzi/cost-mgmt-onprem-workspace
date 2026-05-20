@@ -12,7 +12,8 @@
 
 | Layer | State |
 |-------|--------|
-| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam` (lazy entry); `RBACHook` shim; `npm run verify:onprem` ✅; e2e [`e2e/`](../../submodules/koku-ui/apps/rbac-ui-onprem/e2e/) |
+| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam` (lazy entry); `RBACHook` shim; `npm run verify:onprem` ✅ |
+| Host e2e | `apps/koku-ui-onprem/e2e/` — Playwright smoke (`npm run verify:onprem-e2e`); Cypress unchanged under `cypress/` |
 | Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider` under `ScalprumProvider`, chrome stub |
 | Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
 | Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc16` (cluster); **rc17** = single-tree pack after unified shims (see IMPLEMENTATION_LOG **2026-05-20**) |
