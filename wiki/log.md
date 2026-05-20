@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-20] update | FLPATH-4164 AC only in RPI 40-verify
+
+Removed `apps/rbac-ui-onprem/e2e/ACCEPTANCE_CRITERIA.md`; consolidated checklist in `pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md` (UI-modifying gate, preconditions, 3/3 + 5/5). E2E README points to pipeline SoT.
+
 ## [2026-05-20] update | FLPATH-4164 rbac-ui-onprem e2e folder
 
 Playwright moved to `apps/rbac-ui-onprem/e2e/`; `verify:onprem-e2e` (3 loads + 5 nav) **8/8** local; acceptance criteria in e2e + pipeline `40-verify`.

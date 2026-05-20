@@ -17,6 +17,6 @@
 | Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
 | Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc16` (cluster); **rc17** = single-tree pack after unified shims (see IMPLEMENTATION_LOG **2026-05-20**) |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
-| Verified | Overview + **My User Access** on `<leased-cluster>`; local e2e **8/8** (`apps/rbac-ui-onprem/e2e/`, `npm run verify:onprem-e2e`) |
+| Verified | Overview + **My User Access** on `<leased-cluster>`; local e2e **8/8** (`npm run verify:onprem-e2e`); AC in [`40-verify/ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md) |
 | Host nav | `basename=/iam`, `useAppLink` shim, **stable** `useChrome` singleton, PF shims, `assign`/`href`; see **PLAN.md** Phase 8 |
 | Next | Manual cluster nav spot-check on **rc15** (SSO); PRs (koku-ui + chart) |
