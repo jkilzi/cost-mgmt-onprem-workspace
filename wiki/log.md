@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-21] update | FLPATH-4164 rc19 deploy + cluster parity E2E
+
+Image `flpath-4164-rc19` on <leased-cluster>; `test:cypress:live:parity` **11/11**; refreshed `visual-compare/cluster/*.png`; [`VERIFICATION.md`](pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) updated.
+
 ## [2026-05-21] update | FLPATH-4164 Phase 9 visual parity implement (koku-ui)
 
 `koku-ui@e8cc28355` on `feat/flpath-4164`: remove `TableView` webpack shim; add `onprem-iam-host.css` container queries for bundle cards. Workspace pins submodule; [`PLAN.md` Phase 9](pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md).

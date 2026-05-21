@@ -16,7 +16,7 @@
 | Host e2e | `apps/koku-ui-onprem/cypress/e2e/live/` — **`test:cypress:live`** (**16/16**) after **`start:onprem:dev`**; **not CI**; Playwright removed |
 | Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider` under `ScalprumProvider`, chrome stub |
 | Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
-| Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc18` (<leased-cluster>; IAM NavExpandable + `/iam` prefix nav) |
+| Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc19` (<leased-cluster>; Storybook parity — TableView + MUA cards) |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
 | Verified | [`VERIFICATION.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) **Partial pass** — rc18 functional + **POC shell sign-off** ([`VISUAL_SIGNOFF.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/visual-compare/VISUAL_SIGNOFF.md)) |
 | Host nav | **`NavExpandable` “Identity and Access Management”** after Settings → Overview, My User Access, Users, Roles, Groups — [`ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md) |
