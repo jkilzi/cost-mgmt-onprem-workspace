@@ -18,7 +18,8 @@
 | Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
 | Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc19` (<leased-cluster>; Storybook parity — TableView + MUA cards) |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
-| Verified | [`VERIFICATION.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) **Partial pass** — rc18 functional + **POC shell sign-off** ([`VISUAL_SIGNOFF.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/visual-compare/VISUAL_SIGNOFF.md)) |
+| Verified | [`VERIFICATION.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) **Partial pass** — POC shell (rc18) + parity must-fix on **rc19** |
 | Host nav | **`NavExpandable` “Identity and Access Management”** after Settings → Overview, My User Access, Users, Roles, Groups — [`ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md) |
-| Visual (Storybook parity) | **In progress** — `koku-ui@e8cc28355`: upstream `TableView` restored; `.onprem-iam-host` container queries for MUA-02; **rc19+** cluster + screenshot verify pending |
-| Next | Build/push **rc19+** image; refresh `visual-compare/cluster/*.png`; optional overview `iam.svg` host asset |
+| Cluster E2E | `npm run test:cypress:live:parity` — **11/11** (`koku-ui@ba9b1b0e1`) |
+| Visual (Storybook parity) | **Must-fix pass** on rc19 — [`visual-compare/cluster/`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/visual-compare/cluster/); OV `iam.svg` optional |
+| Next | Stakeholder review rc19 screenshots; optional overview `iam.svg` host asset |
