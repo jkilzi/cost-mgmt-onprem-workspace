@@ -20,5 +20,5 @@
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
 | Verified | [`VERIFICATION.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) **Partial pass** — rc18 functional + **POC shell sign-off** ([`VISUAL_SIGNOFF.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/visual-compare/VISUAL_SIGNOFF.md)) |
 | Host nav | **`NavExpandable` “Identity and Access Management”** after Settings → Overview, My User Access, Users, Roles, Groups — [`ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md) |
-| Visual (Storybook parity) | **Open** — MUA-02 bundle cards; Users/Roles/Groups `TableView` chrome — **must fix** per intake; breadcrumbs/tab title out of POC scope |
-| Next | Plan/implement Storybook parity → **rc19+** re-verify; optional overview `iam.svg` host asset |
+| Visual (Storybook parity) | **In progress** — `koku-ui@e8cc28355`: upstream `TableView` restored; `.onprem-iam-host` container queries for MUA-02; **rc19+** cluster + screenshot verify pending |
+| Next | Build/push **rc19+** image; refresh `visual-compare/cluster/*.png`; optional overview `iam.svg` host asset |
