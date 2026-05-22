@@ -2,6 +2,14 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] update | Remove cluster IAM parity Cypress (koku-ui)
+
+Deleted `04-iam-storybook-parity.cy.ts`, `cluster-live.ts`, `test:cypress:live:parity` / `:cluster`, and [`copy-flpath-4164-cluster-visual-compare.sh`](scripts/rpi/copy-flpath-4164-cluster-visual-compare.sh). Local live suite remains **`test:cypress:live`** (16 tests). Cluster visual evidence is manual; archived PNGs unchanged.
+
+## [2026-05-22] update | cluster visual-compare copy script → workspace
+
+Moved `copy-cluster-visual-compare.sh` out of `submodules/koku-ui/scripts/` to [`scripts/rpi/copy-flpath-4164-cluster-visual-compare.sh`](scripts/rpi/copy-flpath-4164-cluster-visual-compare.sh) — RPI sign-off glue belongs in superproject, not upstream koku-ui.
+
 ## [2026-05-22] update | copy-cluster-visual-compare DEST path
 
 `koku-ui/scripts/copy-cluster-visual-compare.sh` used `../pipelines` from submodule root (wrote `submodules/pipelines/`); fixed to `../../pipelines` → workspace `pipelines/rpi/.../visual-compare/cluster/`. Removed accidental `submodules/pipelines/`.
