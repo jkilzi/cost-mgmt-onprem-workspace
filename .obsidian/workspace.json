@@ -177,33 +177,5 @@
     }
   },
   "active": "75fe65f88952fd2a",
-  "lastOpenFiles": [
-    "wiki/workspace/jira-cli-issue-links.md",
-    "wiki/entities/flpath-4164-rbac-mfe-poc.md",
-    "pipelines/rpi/v1/stages/40-verify/output/flpath-4180/VERIFICATION.md",
-    "pipelines/rpi/v1/stages/40-verify/output/flpath-4180",
-    "pipelines/rpi/v1/stages/30-implement/output/flpath-4180/IMPLEMENTATION_LOG.md",
-    "pipelines/rpi/v1/stages/30-implement/output/flpath-4180",
-    "constitutions/insights-rbac-ui/constitution.md",
-    "constitutions/insights-rbac-ui",
-    "wiki/workspace/jira-handoff-without-public-repo.md",
-    "pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md",
-    "pipelines/rpi/v1/stages/20-plan/output/flpath-4164",
-    "pipelines/rpi/v1/stages/20-plan/output/flpath-4180/PLAN.md",
-    "pipelines/rpi/v1/stages/20-plan/output/flpath-4180",
-    "wiki/log.md",
-    "wiki/index.md",
-    "AGENTS.md",
-    "constitutions/cost-onprem-chart/constitution.md",
-    "wiki/entities/flpath-4180-fec-rbac-mfe.md",
-    "pipelines/rpi/v1/stages/10-research/output/flpath-4180/RESEARCH.md",
-    "pipelines/rpi/v1/stages/10-research/output/flpath-4180/QUESTIONS.md",
-    "pipelines/rpi/v1/stages/10-research/output/flpath-4180/SCOPE.md",
-    "pipelines/rpi/v1/stages/10-research/output/flpath-4180",
-    "submodules/koku-ui/apps/koku-ui-hccm/src/routes/settings/utils/parseError.ts",
-    "submodules/koku-ui/apps/koku-ui-hccm/src/routes/settings/utils/parseError.test.ts",
-    "submodules/koku-ui/apps/koku-ui-hccm/src/routes/settings/utils/index.ts",
-    "submodules/koku-ui/apps/koku-ui-hccm/src/routes/settings/priceList/utils/index.ts",
-    "wiki/entities/demo-catalog-cost-onprem-install.md"
-  ]
+  "lastOpenFiles": []
 }
