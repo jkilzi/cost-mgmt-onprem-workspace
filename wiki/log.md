@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] update | Flatten constitutions to constitutions/<submodule>.md
+
+Moved five `constitutions/<name>/constitution.md` files to flat `constitutions/<name>.md`; updated `AGENTS.md`, workspace/submodule git rules, and `wiki/entities/sources-ui-reference.md`.
+
 ## [2026-05-22] update | public-push: GHAS optional (paid)
 
 Clarified GitHub Secret Protection is optional/paid; gitleaks is required; private personal repos often lack security toggles until public — then **Settings → Security** appears.

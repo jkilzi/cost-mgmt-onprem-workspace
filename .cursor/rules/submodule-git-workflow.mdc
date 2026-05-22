@@ -20,4 +20,4 @@ For **every new task** that changes code under **`submodules/<name>/`**, do the 
 
 ## Exceptions
 
-Project-specific overrides belong in **`constitutions/<name>/constitution.md`**.
+Project-specific overrides belong in **`constitutions/<name>.md`**.

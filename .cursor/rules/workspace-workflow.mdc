@@ -37,4 +37,4 @@ Paste self-contained conclusions in Jira; link wiki for checkout users — [wiki
 
 ## Mission context
 
-Per-submodule conventions: `constitutions/<name>/constitution.md`.
+Per-submodule conventions: `constitutions/<name>.md`.

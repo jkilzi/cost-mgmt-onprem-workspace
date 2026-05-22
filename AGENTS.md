@@ -16,7 +16,7 @@ You are a professional software engineer, you deliver full-stack solutions by le
 ./
 ├── AGENTS.md (we start here)
 ├── .cursor/          (rules, skills, plans)
-├── constitutions/    (per-submodule mission and tech notes)
+├── constitutions/    (per-submodule mission and tech notes: `<name>.md`)
 ├── submodules/       (checkout copies of upstream repos)
 └── wiki/             (Karpathy LLM wiki — see wiki/index.md, wiki/log.md)
 ```
@@ -29,7 +29,7 @@ You are a professional software engineer, you deliver full-stack solutions by le
 | Workspace workflow (scope, wiki, submodules) | [`.cursor/rules/workspace-workflow.mdc`](.cursor/rules/workspace-workflow.mdc) |
 | LLM wiki layers and operations | [`.cursor/rules/llm-wiki.mdc`](.cursor/rules/llm-wiki.mdc) |
 | Submodule Git workflow (branch off default) | [`.cursor/rules/submodule-git-workflow.mdc`](.cursor/rules/submodule-git-workflow.mdc) |
-| Submodule mission and tech notes | [`constitutions/<name>/`](constitutions/) |
+| Submodule mission and tech notes | [`constitutions/<name>.md`](constitutions/) |
 | Checkout / upstream submodule sources | [`submodules/<name>/`](submodules/) |
 | Agent knowledgebase (wiki tree, index, log) | [`wiki/`](wiki/) |
 | cost-onprem-chart OpenShift install | [`.cursor/skills/cost-onprem-chart-install/SKILL.md`](.cursor/skills/cost-onprem-chart-install/SKILL.md); [`wiki/entities/demo-catalog-cost-onprem-install.md`](wiki/entities/demo-catalog-cost-onprem-install.md) |

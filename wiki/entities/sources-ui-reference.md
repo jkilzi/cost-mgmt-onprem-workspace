@@ -21,6 +21,6 @@ On-prem **`koku-ui-sources`** calls Koku **`/api/cost-management/v1/sources/`**,
 
 ## Related
 
-- Constitution: [`constitutions/sources-ui/constitution.md`](../../constitutions/sources-ui/constitution.md)
+- Constitution: [`constitutions/sources-ui.md`](../../constitutions/sources-ui.md)
 - On-prem app: `submodules/koku-ui/apps/koku-ui-sources/` (package `@koku-ui/koku-ui-sources`)
 - RPI / PR context: [project-koku/koku-ui#4977](https://github.com/project-koku/koku-ui/pull/4977) — replaces SaaS Platform Sources dependency for on-prem

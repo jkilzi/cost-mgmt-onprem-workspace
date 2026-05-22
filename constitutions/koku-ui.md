@@ -18,5 +18,5 @@ Monorepo for Cost Management user interfaces: multiple apps and shared libraries
 
 ## Related reference (workspace)
 
-SaaS Platform Sources UI counterpart for **`apps/koku-ui-sources`**: **`sources-ui`** submodule and [`constitutions/sources-ui/`](../sources-ui/constitution.md) (backend: **sources-api-go**, not checked out here).
+SaaS Platform Sources UI counterpart for **`apps/koku-ui-sources`**: **`sources-ui`** submodule and [`constitutions/sources-ui.md`](sources-ui.md) (backend: **sources-api-go**, not checked out here).
 
