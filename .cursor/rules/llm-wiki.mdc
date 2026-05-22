@@ -35,10 +35,10 @@ Do **not** wait for “put this in the wiki.” After **substantive** work (rese
 
 - Non-obvious fact, constraint, or command that will matter in a **later** session.
 - A mistake, false assumption, or fix worth **not repeating**.
-- A stable decision or rationale **not** captured in an ADR, plan file, or scoped pipeline artifact.
+- A stable decision or rationale **not** captured in an ADR, plan file, or wiki entity page.
 - A good synthesis, comparison, or answer the user might ask again — **file it**, not only chat.
 
-Skip trivia, secrets, one-off typos, or anything already the single source of truth in `pipelines/` scoped output or upstream submodule docs (link instead).
+Skip trivia, secrets, one-off typos, or anything already the single source of truth in upstream submodule docs (link instead).
 
 ## What to touch each time
 

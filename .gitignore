@@ -1,5 +1,10 @@
 .DS_Store
-.playwright-mcp
+
+# Browser/agent automation dumps (cluster URLs, form values)
+.playwright-mcp/
+
+# Cluster UI screenshots (may contain usernames/org data; keep locally)
+wiki/**/visual-compare/cluster/
 
 # Local upstream mapping for git-submodules-status skill (see references/config.schema.json)
 .cursor/skills/git-submodules-status/references/config.json

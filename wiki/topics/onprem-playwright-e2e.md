@@ -30,6 +30,5 @@ npm run test:cypress:live
 
 ## Related
 
-- [FLPATH-4164 entity](../entities/flpath-4164-rbac-mfe-poc.md)
-- [RPI 40-verify UI acceptance](rpi-verify-ui-acceptance.md)
-- Pipeline AC: [`pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md)
+- [FLPATH-4164 entity](../entities/flpath-4164-rbac-mfe-poc.md) — acceptance criteria summary
+- [UI verification and E2E](ui-verification-and-e2e.md)

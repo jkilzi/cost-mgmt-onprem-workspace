@@ -51,7 +51,7 @@ isProject: false
 Because the skill is invoked by an agent in chat, **setup** is best specified as:
 
 1. User says **exactly** “setup submodules skill”.
-2. Agent reads [`.gitmodules`](<WORKSPACE_ROOT>/.gitmodules) for submodule **names** (`cost-onprem-chart`, `koku`, `koku-ui`, `insights-rbac-ui`).
+2. Agent reads [`.gitmodules`](../../.gitmodules) for submodule **names** (`cost-onprem-chart`, `koku`, `koku-ui`, `insights-rbac-ui`).
 3. Agent asks once per submodule: “What’s the upstream remote name for `<name>`?”
 4. Agent writes [`references/config.json`](.cursor/skills/git-submodules-status/references/config.json) in the array shape you specified.
 5. Agent validates each `upstream_name` exists in that submodule (`git remote get-url <upstream_name>`).

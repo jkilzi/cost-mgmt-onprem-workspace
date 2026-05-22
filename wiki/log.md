@@ -2,6 +2,14 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] lint | Public repo hygiene (redact + gitignore)
+
+Added [public-repo-hygiene.md](workspace/public-repo-hygiene.md); gitignore `wiki/**/visual-compare/cluster/`; redacted personal Quay, Demo Catalog URL, and workshop cluster hosts in entity pages, log, and plans; `visual-compare/README.md` for local PNG workflow.
+
+## [2026-05-22] ingest | Remove RPI pipeline (`feat/no-pipelines`)
+
+Migrated `flpath-4164` / `flpath-4180` pipeline outputs into wiki entities; `visual-compare/` → `wiki/entities/flpath-4164/`; renamed `rpi-verify-ui-acceptance` → `ui-verification-and-e2e`; deleted `pipelines/rpi/`, `rpi-pipeline.mdc`, `scripts/rpi/`; added `workspace-workflow.mdc`; rewrote `AGENTS.md`.
+
 ## [2026-05-22] update | Remove cluster IAM parity Cypress (koku-ui)
 
 Deleted `04-iam-storybook-parity.cy.ts`, `cluster-live.ts`, `test:cypress:live:parity` / `:cluster`, and [`copy-flpath-4164-cluster-visual-compare.sh`](scripts/rpi/copy-flpath-4164-cluster-visual-compare.sh). Local live suite remains **`test:cypress:live`** (16 tests). Cluster visual evidence is manual; archived PNGs unchanged.
@@ -20,7 +28,7 @@ Moved `copy-cluster-visual-compare.sh` out of `submodules/koku-ui/scripts/` to [
 
 ## [2026-05-21] update | FLPATH-4164 rc19 deploy + cluster parity E2E
 
-Image `flpath-4164-rc19` on <leased-cluster>; `test:cypress:live:parity` **11/11**; refreshed `visual-compare/cluster/*.png`; [`VERIFICATION.md`](pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) updated.
+Image `flpath-4164-rc19` on `<leased-cluster>`; `test:cypress:live:parity` **11/11**; refreshed `visual-compare/cluster/*.png`; [`VERIFICATION.md`](pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) updated.
 
 ## [2026-05-21] update | FLPATH-4164 Phase 9 visual parity implement (koku-ui)
 
@@ -92,7 +100,7 @@ RolesTable imported SkeletonTableBody from package root; shared PF chunk 6658 on
 
 ## [2026-05-19] update | FLPATH-4164 rc15 ship + verify closeout
 
-Hybrid pack `flpath-4164-rc15` deployed on <leased-cluster>; local `verify:onprem-nav` 5/5 after restoring `useChrome` singleton (first rc15 pack missed it). Added `ACCEPTANCE_CRITERIA.md`; updated `VERIFICATION.md`.
+Hybrid pack `flpath-4164-rc15` deployed on `<leased-cluster>`; local `verify:onprem-nav` 5/5 after restoring `useChrome` singleton (first rc15 pack missed it). Added `ACCEPTANCE_CRITERIA.md`; updated `VERIFICATION.md`.
 
 ## [2026-05-19] update | FLPATH-4164 research consolidated into PLAN.md
 
@@ -275,7 +283,7 @@ Documented post-Keycloak “bounce to login” as Envoy/Lua **401** when `org_id
 Added `wiki/entities/known-issue-keycloak-declarative-profile-jwt.md`, skill script `.cursor/skills/cost-onprem-chart-install/scripts/keycloak-fix-org-jwt-claims.sh` (`verify`/`fix`), **Known issue** + install-step row in `SKILL.md`; cross-links in `wiki/index.md` and `wiki/entities/demo-catalog-cost-onprem-install.md`.
 
 ## [2026-05-18] update | FLPATH-4164 cluster UI image (personal Quay rc2)
-Personal Quay `koku-ui-onprem:flpath-4164-rc2` on <leased-cluster>; `/rbac/` manifest 200 in pod; `ui-image-values.yaml` + pull secret `<quay-pull-secret>`.
+Personal Quay `koku-ui-onprem:flpath-4164-rc2` on `<leased-cluster>`; `/rbac/` manifest 200 in pod; `ui-image-values.yaml` + pull secret `<quay-pull-secret>`.
 
 ## [2026-05-18] update | FLPATH-4164 checkpoint (Phases 3, 6, verify)
 

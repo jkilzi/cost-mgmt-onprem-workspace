@@ -2,23 +2,101 @@
 
 **Jira:** [FLPATH-4164](https://redhat.atlassian.net/browse/FLPATH-4164) (*POC: RBAC UI as on-prem MFE (koku-ui-onprem + chart RBAC API)*). **Parent:** [FLPATH-3424](https://redhat.atlassian.net/browse/FLPATH-3424).
 
-**Pipeline SoT:** [`pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md`](../../pipelines/rpi/v1/stages/20-plan/output/flpath-4164/PLAN.md) — consolidated scope, research digest, phases 0–8 (nav fix). Facts-only research: [`RESEARCH.md`](../../pipelines/rpi/v1/stages/10-research/output/flpath-4164/RESEARCH.md).
-
-**Prerequisite (closed):** [FLPATH-4180](https://redhat.atlassian.net/browse/FLPATH-4180) — see [`flpath-4180-fec-rbac-mfe.md`](flpath-4180-fec-rbac-mfe.md).
+**Prerequisite (closed):** [FLPATH-4180](https://redhat.atlassian.net/browse/FLPATH-4180) — see [flpath-4180-fec-rbac-mfe.md](flpath-4180-fec-rbac-mfe.md).
 
 **UX vision (product):** On **FLPATH-4164**, Jira **comment +** `ux-vision-my-user-access-cost-onprem.png` (Identity and Access Management shell, **My User Access**); session context: [FLPATH-3424 focused comment](https://redhat.atlassian.net/browse/FLPATH-3424?focusedCommentId=16901888).
 
-## Implementation status (2026-05-21)
+**Branch (stakeholder):** `submodules/koku-ui` on **`feat/flpath-4164`**.
+
+## Parent epic (FLPATH-3424)
+
+On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and Cost, upstream **insights-rbac-ui** as source of truth with build-time gates for SaaS-only features. Near-term delivery evolved to **MFE inside `koku-ui-onprem`** (this POC), not a separate hostname. **Blocks:** FLPATH-4121 (design). See [FLPATH-3424](https://redhat.atlassian.net/browse/FLPATH-3424).
+
+## Scope and goal
+
+| Field | Value |
+|-------|--------|
+| **Submodules** | `cost-onprem-chart` (Envoy `/api/rbac/`), `koku-ui` (`koku-ui-onprem` host, `rbac-ui-onprem` remote, `onprem-cloud-deps` shims) |
+| **Goal** | Federate **insights-rbac-ui** into **`koku-ui-onprem`** (Scalprum + `DynamicRemotePlugin`), `/rbac/` assets, `/api/rbac/` same-origin, prove IAM on cluster before maintainer sync (**FLPATH-4152**) |
+
+**Constraint:** No edits to **RedHatInsights/insights-rbac-ui** in this POC — wrapper + pin in `apps/rbac-ui-onprem/`.
+
+## Integration constants
+
+| Constant | Value |
+|----------|--------|
+| Scalprum scope | `insightsRbac` |
+| `publicPath` / static | `/rbac/` |
+| Federated module | `./Iam` |
+| IAM host routes | `/iam/*` |
+| Router basename (IAM) | `/iam` when URL under `/iam` |
+
+## Plan (phases)
+
+| Phase | Objective | Status |
+|-------|-----------|--------|
+| 0 | Preconditions — branch, 4180 read | Done |
+| 1 | `apps/rbac-ui-onprem` remote + manifest | Done |
+| 2 | Host static, proxy, Scalprum, `/iam/*` | Done |
+| 3 | Unleash / `useFlag` stub | Done |
+| 4 | Root `build:onprem` / `verify:onprem` | Done |
+| 5 | `onprem-cloud-deps` shims | Done (extend as needed) |
+| 6 | Production image + chart `/rbac/` nginx | Done |
+| 7 | Local + cluster verification | Done |
+| 8 | Host ↔ IAM nav freeze fix | Done |
+| 9 | Storybook visual parity (MUA-02, tables, OV icon) | Done (rc19–rc21) |
+
+**Deferred:** Upstream RBAC repo edits; `ExtensionsPlugin` parity; Stefan-flagged UX removals until FLPATH-4121 list.
+
+## Implementation status (2026-05-22)
 
 | Layer | State |
 |-------|--------|
-| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam` (lazy entry); `RBACHook` shim; `npm run verify:onprem` ✅ |
-| Host e2e | `apps/koku-ui-onprem/cypress/e2e/live/` — **`test:cypress:live`** (**16/16**) after **`start:onprem:dev`**; **not CI**; Playwright removed |
-| Host | static `/rbac/`, proxy `/api/rbac`, `/iam/*`, `FlagProvider` under `ScalprumProvider`, chrome stub |
-| Chart | nginx `location /rbac/` — branch `feat/flpath-4164-ui-rbac-nginx` in `cost-onprem-chart` |
-| Cluster image | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc19` (<leased-cluster>; Storybook parity — TableView + MUA cards) |
+| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; `npm run verify:onprem` ✅ |
+| Host e2e | `cypress/e2e/live/` — **`test:cypress:live`** **16/16** after **`start:onprem:dev`**; not CI |
+| Host | `/rbac/`, `/api/rbac` proxy, `/iam/*`, chrome stub |
+| Chart | nginx `location /rbac/` — `feat/flpath-4164-ui-rbac-nginx` |
+| Cluster image | **`quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc21`** on **`<leased-cluster>`** |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
-| Verified | [`VERIFICATION.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/VERIFICATION.md) **Partial pass** — POC shell (rc18) + parity must-fix on **rc19** |
-| Host nav | **`NavExpandable` “Identity and Access Management”** after Settings → Overview, My User Access, Users, Roles, Groups — [`ACCEPTANCE_CRITERIA.md`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/ACCEPTANCE_CRITERIA.md) |
-| Visual (Storybook parity) | **Must-fix pass** on rc19 — archived [`visual-compare/cluster/`](../../pipelines/rpi/v1/stages/40-verify/output/flpath-4164/visual-compare/cluster/) (manual capture; cluster parity Cypress removed 2026-05-22); OV `iam.svg` **fixed** in host (`CopyWebpackPlugin` → `/apps/frontend-assets/technology-icons/iam.svg`) |
-| Next | Build/push **rc20+** for cluster OV screenshot; stakeholder review rc19 screenshots |
+| Verified | **Partial pass** — POC shell (rc18); parity must-fix on rc19; OV + MUA bundles on rc20–rc21 |
+| Host nav | `NavExpandable` **Identity and Access Management** → Overview, MUA, Users, Roles, Groups |
+| Visual | [visual-compare/cluster/](visual-compare/cluster/) — rc19+ screenshots; OV `iam.svg` fixed in host |
+
+**Overall:** POC shell + functional gates satisfied; visual parity must-fix items passed on rc19–rc21. Open: refresh cluster PNGs on rc21; breadcrumbs/tab title out of POC scope.
+
+## Acceptance criteria (summary)
+
+**UI-modifying:** yes — `submodules/koku-ui/`.
+
+**Preconditions (local):** `npm run build:onprem`; `npm run verify:onprem`; `npm run start:onprem:dev`; optional `/api/rbac/v1/status/` 2xx via `setup-onprem-env.sh`.
+
+**Host IAM nav:** After Settings, `NavExpandable` **Identity and Access Management** with children: Overview → `/iam/user-access/overview`, My User Access → `/iam/my-user-access`, Users, Roles, Groups (full `/iam/...` paths).
+
+**E2E (local, not CI):** From `submodules/koku-ui` root: `npm run start:onprem:dev` then **`npm run test:cypress:live`** (16 tests — loads, host↔IAM nav, IAM sidebar). Specs: `apps/koku-ui-onprem/cypress/e2e/live/`.
+
+**Cluster (manual, oauth2-proxy):** Deployed tag matches record; in-pod `/rbac/plugin-manifest.json` **200**; manual Chrome for IAM nav behind SSO.
+
+**Out of scope:** Cluster Cypress without auth; full Helm upgrade unblock; pixel-perfect SaaS chrome outside POC slice.
+
+## Nav diagnosis (2026-05-19, resolved)
+
+**Symptoms (fixed):** IAM page freeze; sidebar toggle hang; cannot return to Overview; `Maximum update depth exceeded`.
+
+**Root causes:** (A) federated `SkeletonTable` loop; (B) cross-app nav + IAM catch-all race; (C) unstable `useChrome` object identity.
+
+**Fixes:** Webpack shims (`LoaderPlaceholders`, `TableView`); host full-page nav for cross-app; stable `useChrome` singleton; `remoteKey` on Scalprum; basename `/iam` on host router.
+
+## Cluster deploy (interim)
+
+| Item | Value |
+|------|--------|
+| **Image** | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc21` |
+| **Cluster** | `<leased-cluster>`, namespace `cost-onprem` |
+| **Deploy** | `oc set image deployment/cost-onprem-ui -n cost-onprem app=quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc21` |
+| **Verify in pod** | `curl http://127.0.0.1:8080/rbac/plugin-manifest.json` → **200** |
+
+Full amd64 pack recipe (`Dockerfile.pack-amd64`, `ui-image-values.yaml`, hybrid host `build:onprem` flow) lived under removed `pipelines/rpi/.../flpath-4164/` — recover from **git history** on `feat/no-pipelines` parent commits. **Future:** dedicated `koku-ui-onprem-cluster-image` skill (separate thread).
+
+## Visual compare
+
+Evidence: [visual-compare/VISUAL_SIGNOFF.md](visual-compare/VISUAL_SIGNOFF.md), [visual-compare/cluster/](visual-compare/cluster/), [visual-compare/storybook/](visual-compare/storybook/).

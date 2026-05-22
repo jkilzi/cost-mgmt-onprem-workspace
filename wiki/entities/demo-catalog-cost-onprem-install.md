@@ -8,7 +8,7 @@ For a **portable** install checklist (any OpenShift, not only Demo Catalog), use
 
 | Item | Detail |
 |------|--------|
-| Lease / catalog | [Demo Catalog — user service list](https://catalog.demo.redhat.com/services/<your-demo-catalog-user>) |
+| Lease / catalog | [Demo Catalog](https://catalog.demo.redhat.com/) — open **your** user services list (do not commit personal catalog URLs) |
 | Cluster template | **Single-node OpenShift (SNO)** |
 | Shape | **32** vCPU, **128** GiB RAM, **100** GB storage (template-dependent; treat as planning baseline) |
 | Pre-created **user-scoped** projects | `assisted-installer`, `cert-manager`, `cert-manager-operator`, **`keycloak`** |
