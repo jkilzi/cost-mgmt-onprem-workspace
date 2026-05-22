@@ -37,3 +37,7 @@ gitleaks detect --log-opts=--all
 ```
 
 Then follow **[public-push.md](public-push.md)** before `git push --force-with-lease`.
+
+## GitHub Advanced Security (optional, paid)
+
+Native GitHub **secret scanning** / **push protection** require **[GitHub Secret Protection](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security)** (paid; Team/Enterprise or an org license). This workspace uses **gitleaks** (CI + local config) instead — see [public-push.md §4](public-push.md#4-github-repository-settings).

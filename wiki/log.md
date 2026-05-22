@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] update | public-push: GHAS optional (paid)
+
+Clarified GitHub Secret Protection is optional/paid; gitleaks is required; private personal repos often lack security toggles until public — then **Settings → Security** appears.
+
 ## [2026-05-22] update | gitleaks GitHub Actions on main
 
 `gh auth refresh -s workflow`; pushed `.github/workflows/gitleaks.yml` (`081c15f`); Actions run **success**. Pre-commit hook installed via `scripts/install-gitleaks-hook.sh`.

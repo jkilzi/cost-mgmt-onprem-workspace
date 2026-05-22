@@ -48,9 +48,22 @@ Or create the workflow in the GitHub UI (Actions → New workflow → paste from
 
 ## 4. GitHub repository settings
 
-- Enable **secret scanning** and **push protection** (org/repo Settings → Code security).
-- Confirm the **gitleaks** workflow runs green on `main` after it is added.
-- Set visibility to **Public** only after steps 1–3 pass.
+### Required for this workspace (free)
+
+- Confirm the **gitleaks** workflow is green on `main` (Actions tab). That is the primary secret gate for this repo.
+- Set visibility to **Public** in **Settings → General** only after steps 1–3 pass. After going public, security controls usually show up under **Settings → Security** (wording may be **Code security and analysis**, **Advanced Security**, or **Secret protection** depending on GitHub’s UI).
+
+### Optional: GitHub Advanced Security (GHAS) — paid
+
+GitHub’s full **secret scanning** + **push protection** product is **[GitHub Secret Protection](https://docs.github.com/en/get-started/learning-about-github/about-github-advanced-security)** (paid on **private** repos; requires Team/Enterprise or an org license). **Not required** for this workspace — **gitleaks** remains the primary gate.
+
+| Repo type | What you see |
+|-----------|----------------|
+| **Private personal** | Often **no** repo-level secret-scanning / push-protection toggles (GHAS not licensed). |
+| **Public** | **Settings → Security** (or similar) — enable what GitHub offers for public repos; some features are free/limitied, **full Secret Protection** on private repos is still a **paid** SKU. |
+| **Team / Enterprise / org with GHAS** | **Settings → Security → Advanced Security** → **Secret protection**, **Push protection**. |
+
+Enabling GitHub-native scanning is **optional** if gitleaks is green. Useful as defense-in-depth after the repo is public.
 
 ## 5. Re-scrub if leaks return
 
