@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] update | gitleaks GitHub Actions on main
+
+`gh auth refresh -s workflow`; pushed `.github/workflows/gitleaks.yml` (`081c15f`); Actions run **success**. Pre-commit hook installed via `scripts/install-gitleaks-hook.sh`.
+
 ## [2026-05-22] update | History scrub + gitleaks gate (public push prep)
 
 `git filter-repo` removed `pipelines/rpi` and `scripts/rpi` from all commits; redacted Quay/cluster/catalog strings. Added `.gitleaks.toml`, `scripts/gitleaks.workflow.yml.example`, `scripts/install-gitleaks-hook.sh`, [public-push.md](workspace/public-push.md). Force-pushed scrubbed `main` to `origin` (`207af79`); CI workflow deferred until `gh auth refresh -s workflow`.
