@@ -4,7 +4,7 @@ Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-
 
 ## [2026-05-22] update | History scrub + gitleaks gate (public push prep)
 
-`git filter-repo` removed `pipelines/rpi` and `scripts/rpi` from all commits; redacted Quay/cluster/catalog strings. Added `.gitleaks.toml`, GitHub Actions `gitleaks.yml`, `scripts/install-gitleaks-hook.sh`, [public-push.md](workspace/public-push.md).
+`git filter-repo` removed `pipelines/rpi` and `scripts/rpi` from all commits; redacted Quay/cluster/catalog strings. Added `.gitleaks.toml`, `scripts/gitleaks.workflow.yml.example`, `scripts/install-gitleaks-hook.sh`, [public-push.md](workspace/public-push.md). Force-pushed scrubbed `main` to `origin` (`207af79`); CI workflow deferred until `gh auth refresh -s workflow`.
 
 ## [2026-05-22] lint | Public repo hygiene (redact + gitignore)
 
