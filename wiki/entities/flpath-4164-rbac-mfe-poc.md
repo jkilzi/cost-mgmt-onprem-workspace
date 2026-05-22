@@ -56,7 +56,7 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 | Host e2e | `cypress/e2e/live/` — **`test:cypress:live`** **16/16** after **`start:onprem:dev`**; not CI |
 | Host | `/rbac/`, `/api/rbac` proxy, `/iam/*`, chrome stub |
 | Chart | nginx `location /rbac/` — `feat/flpath-4164-ui-rbac-nginx` |
-| Cluster image | **`quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc21`** on **`<leased-cluster>`** |
+| Cluster image | **`quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22`** on **`<leased-cluster>`** |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` |
 | Verified | **Partial pass** — POC shell (rc18); parity must-fix on rc19; OV + MUA bundles on rc20–rc21 |
 | Host nav | `NavExpandable` **Identity and Access Management** → Overview, MUA, Users, Roles, Groups |
@@ -90,7 +90,7 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 
 | Item | Value |
 |------|--------|
-| **Image** | `quay.io/<your-org>/koku-ui-onprem:flpath-4164-rc21` (record current tag here after rollout) |
+| **Image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22` |
 | **Cluster** | `<leased-cluster>`, namespace `cost-onprem` |
 | **Build** | On-demand GHA — [koku-ui-onprem-cluster-image skill](../../.cursor/skills/koku-ui-onprem-cluster-image/SKILL.md) → `trigger-build.sh <tag>` ([wiki topic](../topics/onprem-ui-cluster-image.md)) |
 | **Rollout** | Local Helm — `ui-image-values.local.yaml` + `rollout-ui-image.sh` (not GHA) |

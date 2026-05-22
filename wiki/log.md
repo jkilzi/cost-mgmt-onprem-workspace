@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-22] update | Cluster UI rc22 — MUA PF addons + oc set image
+
+Built `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22` (GHA run 26304296887); Helm upgrade failed on SSA conflicts — deployed via `oc set image` on `cost-onprem-ui` app container.
+
 ## [2026-05-22] update | Load patternfly-addons.css on koku-ui-onprem host
 
 Host `bootstrap.tsx` imports `@patternfly/patternfly/patternfly-addons.css` (same as insights-rbac-ui Storybook) so MUA `display-*-on-lg` utilities work; fixes dropdown+cards both visible without container-query hack.
