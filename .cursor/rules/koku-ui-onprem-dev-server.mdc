@@ -1,0 +1,41 @@
+---
+description: >-
+  When the user asks to start the dev server, default to koku-ui on-prem stack
+  via npm run start:onprem:dev (cluster-backed env from setup-onprem-env.sh).
+alwaysApply: true
+---
+
+# koku-ui on-prem dev server
+
+## Default interpretation
+
+When the user says **dev server**, **dev-server**, **start the UI locally**, or similar **without naming another app**, they mean **`submodules/koku-ui`** — the on-prem Cost Management host plus federated remotes (HCCM, ROS, Sources, RBAC).
+
+## Preferred command
+
+From **`submodules/koku-ui`** (after `git submodule update --init vendor/insights-rbac-ui` if needed):
+
+```bash
+npm run start:onprem:dev
+```
+
+This runs [`scripts/setup-onprem-env.sh`](../../submodules/koku-ui/scripts/setup-onprem-env.sh) (requires `oc` logged into a cluster with cost-onprem), then [`start:onprem`](../../submodules/koku-ui/package.json) via `concurrently`. Default URL: **http://localhost:9001/**.
+
+## Do not use by default
+
+| Command | When |
+| ------- | ---- |
+| `npm run start:onprem` alone | Missing `API_PROXY_URL` — host webpack fails. Only if the user explicitly wants bare `start:onprem` or env is already set. |
+| `npm run start:onprem:koku` | Local Koku API only — use only when the user asks for local Koku, not cluster-backed dev. |
+| `npm run start:onprem -w @koku-ui/rbac-ui-onprem` | RBAC webpack watch only — not the full stack unless the user asks for RBAC in isolation. |
+
+## Before starting
+
+1. Confirm working directory is `submodules/koku-ui`.
+2. If the user needs cluster proxy/Keycloak vars, use **`start:onprem:dev`** — do not invent `API_PROXY_URL` unless they choose the local-Koku path.
+3. Run in a **background terminal** when automating; report host URL and `/rbac/plugin-manifest.json` as a quick health check when the stack is up.
+
+## References
+
+- Host app: [`apps/koku-ui-onprem/README.md`](../../submodules/koku-ui/apps/koku-ui-onprem/README.md)
+- UI verification: [`wiki/topics/ui-verification-and-e2e.md`](../../wiki/topics/ui-verification-and-e2e.md)
