@@ -55,15 +55,15 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 | Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; upstream submodule `koku-ui/vendor/insights-rbac-ui` @ pinned commit ([vendor topic](../topics/rbac-ui-onprem-vendor.md)); webpack `dist/` at image build |
 | Host e2e | `cypress/e2e/live/` — workspace **`test:cypress:live`** **21/21** after root **`start:onprem:dev`** (~31s); not CI |
 | Host | `/rbac/`, `/api/rbac` proxy, `/iam/*`, chrome stub |
-| Chart | nginx `location /rbac/` — PR [insights-onprem/cost-onprem-chart#175](https://github.com/insights-onprem/cost-onprem-chart/pull/175) (`feat/flpath-4164-ui-rbac-nginx-pr`) |
-| Cluster image | **`quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22`** on **`<leased-cluster>`** |
-| Branch | `submodules/koku-ui` → `feat/flpath-4164` @ `5a235d41f` |
+| Chart | nginx `location /rbac/` — PR [#175](https://github.com/insights-onprem/cost-onprem-chart/pull/175); **deployed locally** via `USE_LOCAL_CHART=true` @ `feat/flpath-4164-ui-rbac-nginx-pr` (2026-05-27); UI pod restart required for ConfigMap reload |
+| Cluster image | **`quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc24`** on **cluster-f4rmt** (2026-05-27) |
+| Branch | `submodules/koku-ui` → `feat/flpath-4164` @ `5ca533010` |
 | **PRs (open)** | **koku-ui:** [project-koku/koku-ui#5207](https://github.com/project-koku/koku-ui/pull/5207) · **chart nginx:** [#175](https://github.com/insights-onprem/cost-onprem-chart/pull/175) · **chart RFE (SSA):** [#176](https://github.com/insights-onprem/cost-onprem-chart/pull/176) (separate from 4164) |
 | Verified | **Pre-PR pass** (2026-05-25) — root `build:onprem` ✅; prior live Cypress **21/21** + `/api/rbac/v1/status/` **200** via dev proxy |
 | Host nav | `NavExpandable` **Identity and Access Management** → Overview, MUA, Users, Roles, Groups |
 | Visual | [visual-compare/cluster/](visual-compare/cluster/) — rc19+ screenshots; live parity screenshots in `cypress/screenshots/04-iam-storybook-parity.cy.ts/` |
 
-**Overall:** POC submitted for review (koku-ui #5207 + chart #175). CI pending on koku-ui PR. Follow-up: FLPATH-4152 maintainer sync after merge.
+**Overall:** POC submitted for review (koku-ui #5207 + chart #175). **CI green** on koku-ui PR (2026-05-27, submodule checkout fix). Cluster **rc24** deployed. Follow-up: FLPATH-4152 maintainer sync after merge.
 
 ## Acceptance criteria (summary)
 
@@ -95,7 +95,7 @@ IAM `/api/rbac/v1/*` calls require Envoy route `prefix: /api/rbac/` (FLPATH-4073
 
 | Item | Value |
 |------|--------|
-| **Image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22` |
+| **Image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc24` |
 | **Cluster** | `<leased-cluster>`, namespace `cost-onprem` |
 | **Build** | On-demand GHA — [koku-ui-onprem-cluster-image skill](../../.cursor/skills/koku-ui-onprem-cluster-image/SKILL.md) → `trigger-build.sh <tag>` ([wiki topic](../topics/onprem-ui-cluster-image.md)) |
 | **Rollout** | Local Helm — `ui-image-values.local.yaml` + `rollout-ui-image.sh` (not GHA) |

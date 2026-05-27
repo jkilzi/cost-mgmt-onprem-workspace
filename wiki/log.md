@@ -2,6 +2,14 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-27] update | FLPATH-4164 chart PR 175 nginx on cluster
+
+Helm upgrade with local chart `feat/flpath-4164-ui-rbac-nginx-pr` (PR #175 `/rbac/` location); image rc24 unchanged; `oc rollout restart` needed so UI pod picked up ConfigMap — `/rbac/plugin-manifest.json` returns **application/json**.
+
+## [2026-05-27] update | FLPATH-4164 CI green + cluster rc24
+
+koku-ui PR CI/Cypress pass after `submodules: recursive` in GHA. Built `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc24` (koku-ui `5ca533010`); Helm rollout cluster-f4rmt; `/rbac/plugin-manifest.json` **200**. Entity [flpath-4164-rbac-mfe-poc.md](entities/flpath-4164-rbac-mfe-poc.md).
+
 ## [2026-05-27] update | FLPATH-4164 branch cleanup (host + rbac README)
 
 Removed unused `RBAC_ONPREM_REMOTE.publicPath`, legacy `/openshift/cost-management/rbac/*` redirect, merged Scalprum loading fallback; `rbac-ui-onprem` README links to `koku-ui-onprem` instead of workspace wiki. koku-ui `5a235d41f`; entity [flpath-4164-rbac-mfe-poc.md](entities/flpath-4164-rbac-mfe-poc.md).
