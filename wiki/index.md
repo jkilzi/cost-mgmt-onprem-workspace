@@ -23,10 +23,10 @@ Catalog of pages in this workspace wiki. **Agents:** keep this list accurate whe
 | Page | Summary |
 |------|---------|
 | [topics/ui-verification-and-e2e.md](topics/ui-verification-and-e2e.md) | **Cursor harness:** acceptance criteria on entity pages; mandatory **UI E2E** when the stream modifies UI. |
-| [topics/onprem-playwright-e2e.md](topics/onprem-playwright-e2e.md) | **`koku-ui-onprem/cypress/`:** `integration/` vs `live/` e2e; `test:cypress:live` after `start:onprem:dev` — **not CI**. |
+| [topics/onprem-playwright-e2e.md](topics/onprem-playwright-e2e.md) | **`koku-ui-onprem/cypress/`:** `integration/` vs `live/` e2e; workspace `test:cypress:live` after root `start:onprem:dev` — **not CI**. |
 | [topics/onprem-ui-cluster-image.md](topics/onprem-ui-cluster-image.md) | **Cluster UI image:** on-demand GHA amd64 build → Quay; local Helm rollout + in-pod manifest verify (not Mac amd64 podman). |
 | [topics/rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md) | **`rbac-ui-onprem` webpack shims:** module replacements (useAppLink, LoaderPlaceholders, PF SkeletonTable, component-groups) to avoid IAM tab freeze. |
-| [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md) | **Vendored RBAC remote:** `vendor:rbac-onprem`, `vendor/insights-rbac-ui@<short>/dist/` for hermetic/Konflux UI builds (no GitHub at `npm ci`). |
+| [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md) | **Vendored RBAC upstream:** `koku-ui/vendor/insights-rbac-ui` git submodule; `file:` devDependency; webpack in Containerfile (Konflux). |
 
 ## Entities
 

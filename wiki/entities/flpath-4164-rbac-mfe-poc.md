@@ -39,7 +39,7 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 | 1 | `apps/rbac-ui-onprem` remote + manifest | Done |
 | 2 | Host static, proxy, Scalprum, `/iam/*` | Done |
 | 3 | Unleash / `useFlag` stub | Done |
-| 4 | Root `build:onprem` / `verify:onprem` | Done |
+| 4 | Root `build:onprem`; RBAC webpack in workspace / image | Done |
 | 5 | `onprem-cloud-deps` shims | Done (extend as needed) |
 | 6 | Production image + chart `/rbac/` nginx | Done |
 | 7 | Local + cluster verification | Done |
@@ -52,14 +52,14 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 
 | Layer | State |
 |-------|--------|
-| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; vendored `vendor/insights-rbac-ui@b4ca374/dist/` ([vendor topic](../topics/rbac-ui-onprem-vendor.md)); `npm run verify:onprem` ✅ |
-| Host e2e | `cypress/e2e/live/` — **`test:cypress:live`** **21/21** after **`start:onprem:dev`** (~31s); not CI |
+| Remote | `apps/rbac-ui-onprem` — `insightsRbac`, `/rbac/`, `./Iam`; upstream submodule `koku-ui/vendor/insights-rbac-ui` @ pinned commit ([vendor topic](../topics/rbac-ui-onprem-vendor.md)); webpack `dist/` at image build |
+| Host e2e | `cypress/e2e/live/` — workspace **`test:cypress:live`** **21/21** after root **`start:onprem:dev`** (~31s); not CI |
 | Host | `/rbac/`, `/api/rbac` proxy, `/iam/*`, chrome stub |
 | Chart | nginx `location /rbac/` — PR [insights-onprem/cost-onprem-chart#175](https://github.com/insights-onprem/cost-onprem-chart/pull/175) (`feat/flpath-4164-ui-rbac-nginx-pr`) |
 | Cluster image | **`quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc22`** on **`<leased-cluster>`** |
 | Branch | `submodules/koku-ui` → `feat/flpath-4164` @ `937935d13` |
 | **PRs (open)** | **koku-ui:** [project-koku/koku-ui#5207](https://github.com/project-koku/koku-ui/pull/5207) · **chart nginx:** [#175](https://github.com/insights-onprem/cost-onprem-chart/pull/175) · **chart RFE (SSA):** [#176](https://github.com/insights-onprem/cost-onprem-chart/pull/176) (separate from 4164) |
-| Verified | **Pre-PR pass** (2026-05-25) — `build:onprem` + `verify:onprem` ✅; prior live Cypress **21/21** + `/api/rbac/v1/status/` **200** via dev proxy |
+| Verified | **Pre-PR pass** (2026-05-25) — root `build:onprem` ✅; prior live Cypress **21/21** + `/api/rbac/v1/status/` **200** via dev proxy |
 | Host nav | `NavExpandable` **Identity and Access Management** → Overview, MUA, Users, Roles, Groups |
 | Visual | [visual-compare/cluster/](visual-compare/cluster/) — rc19+ screenshots; live parity screenshots in `cypress/screenshots/04-iam-storybook-parity.cy.ts/` |
 
@@ -69,11 +69,11 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 
 **UI-modifying:** yes — `submodules/koku-ui/`.
 
-**Preconditions (local):** `npm run build:onprem`; `npm run verify:onprem`; `npm run start:onprem:dev`; optional `/api/rbac/v1/status/` 2xx via `setup-onprem-env.sh`. Bump upstream RBAC pin: `npm run vendor:rbac-onprem` (network; see [rbac-ui-onprem-vendor](../topics/rbac-ui-onprem-vendor.md)).
+**Preconditions (local):** `git submodule update --init vendor/insights-rbac-ui` in koku-ui; root `npm ci`; root `npm run build:onprem`; root `npm run start:onprem:dev`; optional `/api/rbac/v1/status/` 2xx via `setup-onprem-env.sh`. Bump upstream RBAC pin: checkout SHA in `vendor/insights-rbac-ui`, `git add` gitlink, `git submodule update --init`, then `HUSKY=0 npm install -w @koku-ui/rbac-ui-onprem` if lockfile changes (see [rbac-ui-onprem-vendor](../topics/rbac-ui-onprem-vendor.md)).
 
 **Host IAM nav:** After Settings, `NavExpandable` **Identity and Access Management** with children: Overview → `/iam/user-access/overview`, My User Access → `/iam/my-user-access`, Users, Roles, Groups (full `/iam/...` paths).
 
-**E2E (local, not CI):** From `submodules/koku-ui` root: `npm run start:onprem:dev` then **`npm run test:cypress:live`** (**21** tests — `01`–`03` nav/load, `04` Storybook parity). Specs: `apps/koku-ui-onprem/cypress/e2e/live/`. If Cypress verify fails with `bad option: --no-sandbox`, unset `ELECTRON_RUN_AS_NODE` (set by some IDE sandboxes).
+**E2E (local, not CI):** From `submodules/koku-ui` root: `npm run start:onprem:dev` then **`npm run test:cypress:live -w @koku-ui/koku-ui-onprem`** (**21** tests — `01`–`03` nav/load, `04` Storybook parity). Specs: `apps/koku-ui-onprem/cypress/e2e/live/`. If Cypress verify fails with `bad option: --no-sandbox`, unset `ELECTRON_RUN_AS_NODE` (set by some IDE sandboxes).
 
 **Cluster (manual, oauth2-proxy):** Deployed tag matches record; in-pod `/rbac/plugin-manifest.json` **200**; manual Chrome for IAM nav behind SSO.
 

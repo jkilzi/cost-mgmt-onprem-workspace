@@ -16,7 +16,7 @@ Live order: `01-app-loads.cy.ts` → `02-host-iam-navigation.cy.ts` (8 tests tot
 **koku-ui** CI must not run `npm run test:cypress:live`:
 
 - Needs `npm run start:onprem:dev` (already runs `setup-onprem-env.sh`) and cluster APIs.
-- **Automatable in CI:** `npm run verify:onprem` only.
+- **Automatable in CI:** `npm run build:onprem -w @koku-ui/rbac-ui-onprem` (and root image build) only.
 
 ## Recommended local flow
 
@@ -25,7 +25,7 @@ cd submodules/koku-ui
 oc login …
 npm run start:onprem:dev
 # other terminal:
-npm run test:cypress:live
+npm run test:cypress:live -w @koku-ui/koku-ui-onprem
 ```
 
 ## Related

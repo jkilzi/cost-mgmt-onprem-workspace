@@ -2,6 +2,26 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-27] update | remove rbac-ui-onprem vendor.sh
+
+Dropped `apps/rbac-ui-onprem/scripts/vendor.sh` and `npm run vendor`; bump is git submodule gitlink + `submodule update` + `npm install`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
+
+## [2026-05-27] update | vendor.sh reads .gitmodules gitlink (no REF)
+
+`vendor.sh` syncs `vendor/insights-rbac-ui` from index/HEAD gitlink per `.gitmodules`; bump is git checkout + `git add` then `npm run vendor`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
+
+## [2026-05-27] update | rbac-ui-onprem vendor → git submodule
+
+Replaced `vendor/manifest.json` + npm pack `.tgz` with `vendor/insights-rbac-ui` submodule and stable `file:../../vendor/insights-rbac-ui` devDependency; `vendor.sh` bumps via `REF=`; Containerfile sets `HUSKY=0`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
+
+## [2026-05-27] update | rbac-ui-onprem webpack-paths inlined
+
+Removed `src/shims/webpack-paths.ts`; shim paths and `insightsRbacModuleReplacements` live in `webpack.config.ts`. Wiki [topics/rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md).
+
+## [2026-05-27] update | rbac-ui-onprem vendor → npm pack at koku-ui root
+
+Replaced committed federated `dist/` with `vendor/manifest.json` + `vendor/insights-rbac-ui@<full-sha>.tgz` and `insights-rbac-frontend` `file:` devDependency; Containerfile builds RBAC like other MFEs. Removed `verify.sh`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
+
 ## [2026-05-27] ingest | rbac-ui-onprem vendored remote (Konflux)
 
 koku-ui: `npm run vendor:rbac-onprem` clones upstream @ ref to OS temp, webpack build → `vendor/insights-rbac-ui@<short>/dist/`; hermetic `npm ci` / Containerfile without `github:insights-rbac-ui`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).

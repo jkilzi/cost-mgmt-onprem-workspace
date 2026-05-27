@@ -21,7 +21,7 @@ Webpack replaces upstream modules so federated IAM runs inside **`koku-ui-onprem
 
 ## Webpack wiring
 
-[`webpack-paths.ts`](../../submodules/koku-ui/apps/rbac-ui-onprem/src/shims/webpack-paths.ts) — absolute paths for aliases and `NormalModuleReplacementPlugin` targets (`insightsRbacModuleReplacements`, `rbacUiOnpremShims`).
+[`webpack.config.ts`](../../submodules/koku-ui/apps/rbac-ui-onprem/webpack.config.ts) — `rbacUiOnpremShims` paths, `insightsRbacModuleReplacements`, aliases, and `NormalModuleReplacementPlugin` targets.
 
 TypeScript alias: `@rbac-ui-onprem/shims/*` → `src/shims/*` ([`tsconfig.json`](../../submodules/koku-ui/apps/rbac-ui-onprem/tsconfig.json)).
 

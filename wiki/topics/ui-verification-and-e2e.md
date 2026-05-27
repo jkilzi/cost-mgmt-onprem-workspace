@@ -26,7 +26,7 @@ flowchart LR
 
 **E2E means:** full user path (login → navigate → act → visible outcome), not unit tests alone. Use Cypress/Playwright when the submodule documents them; otherwise documented manual steps with URL and evidence.
 
-**On-prem live Cypress (`koku-ui-onprem/cypress/e2e/live/`):** local-only via `test:cypress:live` after `start:onprem:dev` — **not** a CI gate. See [onprem-playwright-e2e.md](onprem-playwright-e2e.md).
+**On-prem live Cypress (`koku-ui-onprem/cypress/e2e/live/`):** local-only via `npm run test:cypress:live -w @koku-ui/koku-ui-onprem` after root `start:onprem:dev` — **not** a CI gate. See [onprem-playwright-e2e.md](onprem-playwright-e2e.md).
 
 ## Non-code / Jira-only streams
 
