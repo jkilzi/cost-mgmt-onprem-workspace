@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-27] update | FLPATH-4164 branch cleanup (host + rbac README)
+
+Removed unused `RBAC_ONPREM_REMOTE.publicPath`, legacy `/openshift/cost-management/rbac/*` redirect, merged Scalprum loading fallback; `rbac-ui-onprem` README links to `koku-ui-onprem` instead of workspace wiki. Entity [flpath-4164-rbac-mfe-poc.md](entities/flpath-4164-rbac-mfe-poc.md).
+
 ## [2026-05-27] update | remove rbac-ui-onprem vendor.sh
 
 Dropped `apps/rbac-ui-onprem/scripts/vendor.sh` and `npm run vendor`; bump is git submodule gitlink + `submodule update` + `npm install`. Wiki [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
