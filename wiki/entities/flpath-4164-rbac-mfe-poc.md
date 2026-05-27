@@ -16,7 +16,7 @@ On-prem Cost Management RBAC UI: reuse HCC direction, Keycloak between IDP and C
 
 | Field | Value |
 |-------|--------|
-| **Submodules** | `cost-onprem-chart` (Envoy `/api/rbac/`), `koku-ui` (`koku-ui-onprem` host, `rbac-ui-onprem` remote, `onprem-cloud-deps` shims) |
+| **Submodules** | `cost-onprem-chart` (Envoy `/api/rbac/`), `koku-ui` (`koku-ui-onprem` host, `rbac-ui-onprem` remote + [app shims](../topics/rbac-ui-onprem-shims.md), `onprem-cloud-deps` shims) |
 | **Goal** | Federate **insights-rbac-ui** into **`koku-ui-onprem`** (Scalprum + `DynamicRemotePlugin`), `/rbac/` assets, `/api/rbac/` same-origin, prove IAM on cluster before maintainer sync (**FLPATH-4152**) |
 
 **Constraint:** No edits to **RedHatInsights/insights-rbac-ui** in this POC — wrapper + pin in `apps/rbac-ui-onprem/`.
@@ -89,7 +89,7 @@ IAM `/api/rbac/v1/*` calls require Envoy route `prefix: /api/rbac/` (FLPATH-4073
 
 **Root causes:** (A) federated `SkeletonTable` loop; (B) cross-app nav + IAM catch-all race; (C) unstable `useChrome` object identity.
 
-**Fixes:** Webpack shims (`LoaderPlaceholders`, `TableView`); host full-page nav for cross-app; stable `useChrome` singleton; `remoteKey` on Scalprum; basename `/iam` on host router.
+**Fixes:** [rbac-ui-onprem webpack shims](../topics/rbac-ui-onprem-shims.md) (`useAppLink`, `LoaderPlaceholders`, PF `SkeletonTable*`, `component-groups` barrel); host full-page nav for cross-app; stable `useChrome` singleton; `remoteKey` on Scalprum; basename `/iam` on host router.
 
 ## Cluster deploy
 
