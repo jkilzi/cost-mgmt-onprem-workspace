@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-05-31] ingest | Keycloak org-admin realm role
+
+Wiki [topics/keycloak-org-admin-realm-role.md](topics/keycloak-org-admin-realm-role.md): assign `org-admin` via Admin Console or `deploy-rhbk.sh` + `jwtAuth.realmUsers.orgAdmin`; verify JWT and RBAC `is_org_admin` (My User Access `meta.count`).
+
 ## [2026-05-27] update | FLPATH-4164 chart PR 175 nginx on cluster
 
 Helm upgrade with local chart `feat/flpath-4164-ui-rbac-nginx-pr` (PR #175 `/rbac/` location); image rc24 unchanged; `oc rollout restart` needed so UI pod picked up ConfigMap — `/rbac/plugin-manifest.json` returns **application/json**.
