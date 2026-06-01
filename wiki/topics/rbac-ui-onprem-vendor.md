@@ -36,13 +36,6 @@ After `git pull` that changes the gitlink only: `git submodule update --init ven
 - **Root `build:onprem`:** includes `@koku-ui/rbac-ui-onprem` webpack build.
 - **Dev server:** [`koku-ui-onprem` webpack](../../submodules/koku-ui/apps/koku-ui-onprem/webpack.config.ts) serves `../rbac-ui-onprem/dist` (webpack watch in `start:onprem:dev`).
 
-## Two clones in this workspace
-
-| Location | Purpose |
-|----------|---------|
-| `submodules/insights-rbac-ui` | Superproject reference, storybook baselines |
-| `submodules/koku-ui/vendor/insights-rbac-ui` | **Build pin** for rbac-ui-onprem / Konflux |
-
 ## Related
 
 - [rbac-ui-onprem shims](rbac-ui-onprem-shims.md)

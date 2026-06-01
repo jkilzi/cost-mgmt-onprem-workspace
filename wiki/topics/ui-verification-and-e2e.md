@@ -22,7 +22,7 @@ flowchart LR
 
 ## UI-modifying streams
 
-**Yes** when any: edits in `koku-ui`, `sources-ui`, or `insights-rbac-ui`; frontend paths (`*.tsx`, routes, components); plan explicitly targets in-browser behavior.
+**Yes** when any: edits in `koku-ui` (including vendored `vendor/insights-rbac-ui`), `sources-ui`, or frontend paths (`*.tsx`, routes, components); plan explicitly targets in-browser behavior.
 
 **E2E means:** full user path (login → navigate → act → visible outcome), not unit tests alone. Use Cypress/Playwright when the submodule documents them; otherwise documented manual steps with URL and evidence.
 

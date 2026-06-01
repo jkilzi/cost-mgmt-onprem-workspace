@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-06-01] update | Remove root insights-rbac-ui submodule
+
+Dropped workspace submodule `submodules/insights-rbac-ui`; upstream is vendored at `koku-ui/vendor/insights-rbac-ui`. Updated docs, constitution, and [topics/rbac-ui-onprem-vendor.md](topics/rbac-ui-onprem-vendor.md).
+
 ## [2026-06-01] update | PF shim removal manual verification pass
 
 Human sign-off: IAM nav OK on local `start:onprem:dev` and cluster `flpath-4164-no-shim-rc1` (useAppLink-only). Gates closed for partial removal. [rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md), [flpath-4164-rbac-mfe-poc.md](entities/flpath-4164-rbac-mfe-poc.md).

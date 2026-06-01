@@ -8,6 +8,8 @@
 
 React application for Red Hat’s IAM / role-based access control surfaces in the Hybrid Cloud Console: user access and access-management flows against the RBAC APIs (`@redhat-cloud-services/rbac-client` and related platform clients). In this workspace it is the **upstream source of truth** for the RBAC admin UI that **FLPATH-4164** federates into **`koku-ui-onprem`**, served same-origin with the chart’s **`/api/rbac/`** admin API (see **`cost-onprem-chart`** constitution and RPI scopes **flpath-4164** / **flpath-4180**).
 
+**Checkout path:** `submodules/koku-ui/vendor/insights-rbac-ui` (nested submodule in koku-ui — not a root workspace submodule).
+
 ## Tech stack
 
 - Node.js and npm per root `engines` (Node >= 22.12.x)

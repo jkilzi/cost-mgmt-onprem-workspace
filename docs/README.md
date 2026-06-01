@@ -30,5 +30,4 @@ The [C4 model](https://c4model.com/) views describe the on-prem platform drilled
 
 - `cost-onprem-chart` — Helm chart and deploy scripts
 - `koku` — Cost Management API and data pipeline
-- `koku-ui` — On-prem UI shell and federated apps
-- `insights-rbac-ui` — IAM UI reference (federated into `koku-ui-onprem`)
+- `koku-ui` — On-prem UI shell and federated apps (vendors `insights-rbac-ui` at `vendor/insights-rbac-ui`)

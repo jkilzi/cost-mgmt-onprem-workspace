@@ -8,8 +8,7 @@ Which git repositories contribute to the on-prem platform, what they build, and 
 |-----------|-----------------|--------|-------------------|
 | [`cost-onprem-chart`](../../../submodules/cost-onprem-chart/) | [insights-onprem/cost-onprem-chart](https://github.com/insights-onprem/cost-onprem-chart) | Helm manifests, install scripts, pytest e2e | All Kubernetes resources (no app bytecode) |
 | [`koku`](../../../submodules/koku/) | Cost Management backend | Container image from root `Dockerfile` | Koku API, Masu, listener, Celery beat/workers, migration Jobs |
-| [`koku-ui`](../../../submodules/koku-ui/) | Frontend monorepo | `koku-ui-onprem` image + embedded remote bundles | UI Deployment (app container); static paths for MFEs |
-| [`insights-rbac-ui`](../../../submodules/insights-rbac-ui/) | IAM UI reference | Federated via `apps/rbac-ui-onprem` in koku-ui | Static assets under `/rbac/` in UI pod |
+| [`koku-ui`](../../../submodules/koku-ui/) | Frontend monorepo (vendors `insights-rbac-ui` at `vendor/insights-rbac-ui`) | `koku-ui-onprem` image + embedded remote bundles (incl. `rbac-ui-onprem` → `/rbac/`) | UI Deployment (app container); static paths for MFEs |
 | [`sources-ui`](../../../submodules/sources-ui/) | [RedHatInsights/sources-ui](https://github.com/RedHatInsights/sources-ui) — SaaS Platform Sources UI (**reference only**) | Not deployed on-prem | — (on-prem Integrations: `koku-ui` → `koku-ui-sources`) |
 
 **SaaS backend for `sources-ui` (not a submodule):** [RedHatInsights/sources-api-go](https://github.com/RedHatInsights/sources-api-go).

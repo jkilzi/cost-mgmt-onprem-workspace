@@ -75,7 +75,7 @@ RBAC remote constants: [`onpremRemotes.ts`](../../../submodules/koku-ui/apps/kok
 | HCCM, ROS, Sources remotes | respective apps in monorepo | `/costManagement/`, `/costManagementRos/`, `/sources/` |
 | RBAC remote | `apps/rbac-ui-onprem` (wraps insights-rbac-ui patterns) | `/rbac/` |
 
-[`insights-rbac-ui`](../../../submodules/insights-rbac-ui/) is the upstream IAM UX reference; on-prem delivery is through **`rbac-ui-onprem`** in the koku-ui monorepo, not a separate chart image for the main POC path.
+Upstream **insights-rbac-ui** is vendored at [`koku-ui/vendor/insights-rbac-ui`](../../../submodules/koku-ui/vendor/insights-rbac-ui/); on-prem delivery is through **`rbac-ui-onprem`** in the koku-ui monorepo, not a separate chart image for the main POC path.
 
 ## API access from the browser
 
