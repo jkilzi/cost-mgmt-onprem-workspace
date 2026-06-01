@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-06-01] update | PF shim removal manual verification pass
+
+Human sign-off: IAM nav OK on local `start:onprem:dev` and cluster `flpath-4164-no-shim-rc1` (useAppLink-only). Gates closed for partial removal. [rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md), [flpath-4164-rbac-mfe-poc.md](entities/flpath-4164-rbac-mfe-poc.md).
+
 ## [2026-06-01] update | rbac-ui-onprem PF shims removed; useAppLink kept
 
 Partial shim removal on koku-ui `chore/remove-rbac-ui-onprem-shims` (`cbd4ac211`). Cluster `flpath-4164-no-shim-rc1` deployed; in-pod manifest **200**, no `OnpremIamSpinner` in bundles. Cypress **21/21** dev with useAppLink only; full removal fails `/iam/iam/...`. SSO manual nav pending. [rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md).

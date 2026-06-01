@@ -4,22 +4,22 @@ overview: Validate the 2026-06-01 ablation conclusion on a production nginx imag
 todos:
   - id: remove-shim-code
     content: "Task branch: delete src/shims/, strip webpack/tsconfig/README references; keep onprem-cloud-deps aliases"
-    status: in_progress
+    status: completed
   - id: local-prod-build
     content: Run build:onprem for rbac-ui-onprem + full stack; bundle audit (no OnpremIamSpinner; note SkeletonTable/ThBase presence)
-    status: pending
+    status: completed
   - id: dev-cypress-regress
     content: start:onprem:dev + test:cypress:live 21/21 on no-shim branch
-    status: pending
+    status: completed
   - id: gha-no-shim-image
     content: trigger-build.sh flpath-4164-no-shim-rc1; rollout-ui-image.sh + verify-ui-pod.sh
-    status: pending
+    status: completed
   - id: cluster-sso-smoke
     content: Manual SSO IAM nav checklist on no-shim image; record pass/fail and console errors
-    status: pending
+    status: completed
   - id: decide-merge-wiki
     content: Merge removal PR or apply PF/useAppLink fallback; update wiki entity + log
-    status: pending
+    status: completed
 isProject: false
 ---
 

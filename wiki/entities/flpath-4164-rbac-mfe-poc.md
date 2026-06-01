@@ -101,7 +101,7 @@ IAM `/api/rbac/v1/*` calls require Envoy route `prefix: /api/rbac/` (FLPATH-4073
 | Cluster image | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-no-shim-rc1` |
 | In-pod `/rbac/plugin-manifest.json` | **200** |
 | In-pod bundles | No `OnpremIamSpinner`; real `SkeletonTable` in prod JS |
-| SSO manual IAM checklist | **Human** — https://cost-onprem-ui-cost-onprem.apps.cluster-f4rmt.dynamic2.redhatworkshops.io/iam/my-user-access |
+| SSO manual IAM checklist | **Pass** (2026-06-01) — local dev-server + cluster `flpath-4164-no-shim-rc1` |
 
 Details: [rbac-ui-onprem-shims](../topics/rbac-ui-onprem-shims.md).
 

@@ -12,7 +12,7 @@ Webpack replaces upstream modules so federated IAM runs inside **`koku-ui-onprem
 | **Removed** | `LoaderPlaceholders`, PF `SkeletonTable*`, `component-groups` barrel, `placeholders.tsx` |
 | **Branch** | koku-ui `chore/remove-rbac-ui-onprem-shims` @ `cbd4ac211` |
 | **Cluster image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-no-shim-rc1` (GHA from workspace branch) |
-| **PR** | https://github.com/jkilzi/koku-ui/pull/new/chore/remove-rbac-ui-onprem-shims |
+| **PR** | https://github.com/jkilzi/koku-ui/pull/2 |
 
 **Policy kept:** `@patternfly/react-component-groups` **not** in `sharedModules` ([`webpack.config.ts`](../../submodules/koku-ui/apps/rbac-ui-onprem/webpack.config.ts)).
 
@@ -24,7 +24,7 @@ Webpack replaces upstream modules so federated IAM runs inside **`koku-ui-onprem
 | `start:onprem:dev` + Cypress | **21/21** with `useAppLink` only; **19/21** with zero shims (`/iam/iam/my-user-access` on IAM→MUA nav) |
 | In-pod manifest | `/rbac/plugin-manifest.json` **200** on `flpath-4164-no-shim-rc1` |
 | In-pod bundle audit | **0** files matching `OnpremIamSpinner`; real PF `SkeletonTable` present (no shim stubs) |
-| SSO manual IAM nav | **Pending human** — browser automation stops at Keycloak login ([cluster UI route](https://cost-onprem-ui-cost-onprem.apps.cluster-f4rmt.dynamic2.redhatworkshops.io/iam/my-user-access)) |
+| SSO manual IAM nav | **Pass** (2026-06-01, human) — local `start:onprem:dev` + cluster `flpath-4164-no-shim-rc1` behind SSO; no tab freeze, IAM nav OK |
 
 ## Necessity analysis (2026-06-01 ablation)
 
