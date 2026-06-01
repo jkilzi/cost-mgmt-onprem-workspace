@@ -2,6 +2,10 @@
 
 Append-only timeline of wiki work. **Format:** each entry starts with `## [YYYY-MM-DD] type | Title` where `type` is one of `ingest`, `query`, `lint`, `update`, `bootstrap`.
 
+## [2026-06-01] update | rbac-ui-onprem PF shims removed; useAppLink kept
+
+Partial shim removal on koku-ui `chore/remove-rbac-ui-onprem-shims` (`cbd4ac211`). Cluster `flpath-4164-no-shim-rc1` deployed; in-pod manifest **200**, no `OnpremIamSpinner` in bundles. Cypress **21/21** dev with useAppLink only; full removal fails `/iam/iam/...`. SSO manual nav pending. [rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md).
+
 ## [2026-06-01] ingest | rbac-ui-onprem shim necessity ablation
 
 Cluster-backed `start:onprem:dev` + live Cypress **21/21** with **all app shims disabled** (incl. shared `component-groups`); no depth errors. Verdicts on [topics/rbac-ui-onprem-shims.md](topics/rbac-ui-onprem-shims.md); keep shims until no-shim production/cluster gate. koku-ui `238a666c7`, upstream `b4ca3746`.

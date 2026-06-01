@@ -93,13 +93,23 @@ IAM `/api/rbac/v1/*` calls require Envoy route `prefix: /api/rbac/` (FLPATH-4073
 
 ## Shim necessity (2026-06-01)
 
-Ablation on cluster-backed **`start:onprem:dev`**: live Cypress **21/21** with **all** `src/shims/` webpack replacements disabled (including `component-groups` in `sharedModules`). **No** `Maximum update depth` console errors. Shims **not required for webpack-dev** at koku-ui `238a666c7` / upstream `b4ca3746`; **keep in tree** until a no-shim **production image + cluster SSO** gate passes (historical rc16 ThBase freeze was production nginx). Details: [rbac-ui-onprem-shims analysis](../topics/rbac-ui-onprem-shims.md#necessity-analysis-2026-06-01).
+**Partial removal landed** on koku-ui `chore/remove-rbac-ui-onprem-shims` (`cbd4ac211`): PF SkeletonTable / LoaderPlaceholders / barrel shims **removed**; **`useAppLink` shim retained** (IAM→IAM nav breaks with `/iam/iam/...` without it).
+
+| Check | Result |
+|-------|--------|
+| Cypress `start:onprem:dev` | **21/21** with useAppLink-only |
+| Cluster image | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-no-shim-rc1` |
+| In-pod `/rbac/plugin-manifest.json` | **200** |
+| In-pod bundles | No `OnpremIamSpinner`; real `SkeletonTable` in prod JS |
+| SSO manual IAM checklist | **Human** — https://cost-onprem-ui-cost-onprem.apps.cluster-f4rmt.dynamic2.redhatworkshops.io/iam/my-user-access |
+
+Details: [rbac-ui-onprem-shims](../topics/rbac-ui-onprem-shims.md).
 
 ## Cluster deploy
 
 | Item | Value |
 |------|--------|
-| **Image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-rc25` (2026-06-01 in-pod manifest **200**) |
+| **Image** | `quay.io/jkilzi/koku-ui-onprem:flpath-4164-no-shim-rc1` (2026-06-01; PF shims removed, useAppLink kept) |
 | **Cluster** | `<leased-cluster>`, namespace `cost-onprem` |
 | **Build** | On-demand GHA — [koku-ui-onprem-cluster-image skill](../../.cursor/skills/koku-ui-onprem-cluster-image/SKILL.md) → `trigger-build.sh <tag>` ([wiki topic](../topics/onprem-ui-cluster-image.md)) |
 | **Rollout** | Local Helm — `ui-image-values.local.yaml` + `rollout-ui-image.sh` (not GHA) |
